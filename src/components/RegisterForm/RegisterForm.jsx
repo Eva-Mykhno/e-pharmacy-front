@@ -1,7 +1,12 @@
-import { Field, Form, Formik } from "formik";
-import { NavLink } from "react-router-dom";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { NavLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import s from "./RegisterForm.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { useEffect } from "react";
+import { register } from "../../redux/auth/operations";
+import toast, { Toaster } from "react-hot-toast";
 
 const registerSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,7 +32,20 @@ const registerSchema = Yup.object().shape({
     .required("Enter a valid Password*"),
 });
 
+const success = () => toast.success("Registration successful!");
+const error = (message) => toast.error(message);
+
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]);
+
   const initialRegisterValues = {
     name: "",
     email: "",
@@ -35,35 +53,81 @@ const RegisterForm = () => {
     password: "",
   };
 
-  return (
-    <div className={s.register}>
-      <div className={s.logo}>
-        <picture>
-          <source srcSet="/img/green-logo-1x.webp 1x, /img/green-logo-2x.webp 2x, /img/green-logo-1x.png 1x, /img/green-logo-2x.png 2x" />
-          <img src="/img/green-logo-1x.png" alt="logo" className={s.image} />
-        </picture>
-        <p className={s.logoText}>E-Pharmacy</p>
+  const handleSubmit = async (values, actions) => {
+    try {
+      const result = await dispatch(register(values));
 
-        <picture>
-          <source srcSet="/img/round-pill-1x.webp 1x, /img/round-pill--2x.webp 2x, /img/round-pill--1x.png 1x, /img/round-pill--2x.png 2x" />
-          <img
-            src="/img/round-pill--1x.png"
-            alt="Big round pill"
-            className={s.pill}
-          />
-        </picture>
-      </div>
-      <p className={s.text}>
-        Your medication, delivered Say goodbye to all{" "}
-        <span className={s.span}>your healthcare</span> worries with us
-      </p>
-      <Formik validationSchema={registerSchema}>
+      if (register.fulfilled.match(result)) {
+        actions.resetForm();
+        success();
+      } else {
+        error(result.payload?.message || "Something went wrong... Try again!");
+      }
+    } catch (err) {
+      error(
+        err.response?.data?.message || "Something went wrong... Try again!"
+      );
+    }
+  };
+
+  return (
+    <>
+      <Toaster position="top-center" reverseOrder={true} />;
+      <Formik
+        validationSchema={registerSchema}
+        initialValues={initialRegisterValues}
+        onSubmit={handleSubmit}>
         <Form className={s.form}>
-          <Field />
+          <div className={s.wrap}>
+            <Field
+              type="text"
+              name="name"
+              placeholder="User name"
+              className={s.input}
+            />
+            <ErrorMessage name="name" component="span" className={s.error} />
+          </div>
+
+          <div className={s.wrap}>
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email address"
+              className={s.input}
+            />
+            <ErrorMessage name="email" component="span" className={s.error} />
+          </div>
+
+          <div className={s.wrap}>
+            <Field
+              type="tel"
+              name="phone"
+              placeholder="Phone number"
+              className={s.input}
+            />
+            <ErrorMessage name="phone" component="span" className={s.error} />
+          </div>
+
+          <div className={s.wrap}>
+            <Field
+              type="password"
+              name="password"
+              placeholder="Password"
+              className={s.input}
+            />
+            <ErrorMessage
+              name="password"
+              component="span"
+              className={s.error}
+            />
+          </div>
+          <button type="submit" className={s.button}>
+            Register
+          </button>
+          <NavLink className={s.link}>Already have an account?</NavLink>
         </Form>
       </Formik>
-      <NavLink className={s.link}>Already have an account?</NavLink>
-    </div>
+    </>
   );
 };
 
