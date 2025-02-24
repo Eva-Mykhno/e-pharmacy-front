@@ -7,7 +7,7 @@ const Logo = () => {
         <source srcSet="/img/green-logo-1x.webp 1x, /img/green-logo-2x.webp 2x, /img/green-logo-1x.png 1x, /img/green-logo-2x.png 2x" />
         <img src="/img/green-logo-1x.png" alt="logo" className={s.image} />
       </picture>
-      <h2 className={s.logoText}>E-Pharmacy</h2>
+      <h2 className={s.title}>E-Pharmacy</h2>
     </div>
   );
 };

@@ -12,6 +12,7 @@
   --yellow: #ffc531;
   --main: #93939a;
   --border-input: rgba(29, 30, 33, 0.2);
+  --placeholder: rgba(29, 30, 33, 0.4);
   --total: #e7f1ed;
 }
 
@@ -21,7 +22,7 @@ html {
 }
 
 body {
-  font-family: "Gilroy", "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
@@ -51,6 +52,8 @@ a {
 
 button {
   cursor: pointer;
+  outline: none;
+  border: none;
 }
 
 img {

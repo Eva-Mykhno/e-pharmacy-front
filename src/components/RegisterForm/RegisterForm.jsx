@@ -21,7 +21,7 @@ const registerSchema = Yup.object().shape({
     .required("Mail is a required field"),
   phone: Yup.string()
     .matches(/^\+?[0-9]{10,15}$/, "Phone number format is invalid")
-    .required(),
+    .required("Phone is a required field"),
   password: Yup.string()
     .min(8, "Too short password")
     .max(64, "Too long password")
@@ -29,7 +29,7 @@ const registerSchema = Yup.object().shape({
       /^(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$/,
       "Password must have 1 number and 1 special character."
     )
-    .required("Enter a valid Password*"),
+    .required("Enter a valid password*"),
 });
 
 const success = () => toast.success("Registration successful!");
@@ -72,59 +72,63 @@ const RegisterForm = () => {
 
   return (
     <>
-      <Toaster position="top-center" reverseOrder={true} />;
+      <Toaster position="top-center" reverseOrder={true} />
       <Formik
         validationSchema={registerSchema}
         initialValues={initialRegisterValues}
         onSubmit={handleSubmit}>
         <Form className={s.form}>
-          <div className={s.wrap}>
-            <Field
-              type="text"
-              name="name"
-              placeholder="User name"
-              className={s.input}
-            />
-            <ErrorMessage name="name" component="span" className={s.error} />
-          </div>
+          <div className={s.inputs}>
+            <div className={s.wrap}>
+              <Field
+                type="text"
+                name="name"
+                placeholder="User name"
+                className={s.input}
+              />
+              <ErrorMessage name="name" component="span" className={s.error} />
+            </div>
 
-          <div className={s.wrap}>
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email address"
-              className={s.input}
-            />
-            <ErrorMessage name="email" component="span" className={s.error} />
-          </div>
+            <div className={s.wrap}>
+              <Field
+                type="email"
+                name="email"
+                placeholder="Email address"
+                className={s.input}
+              />
+              <ErrorMessage name="email" component="span" className={s.error} />
+            </div>
 
-          <div className={s.wrap}>
-            <Field
-              type="tel"
-              name="phone"
-              placeholder="Phone number"
-              className={s.input}
-            />
-            <ErrorMessage name="phone" component="span" className={s.error} />
-          </div>
+            <div className={s.wrap}>
+              <Field
+                type="tel"
+                name="phone"
+                placeholder="Phone number"
+                className={s.input}
+              />
+              <ErrorMessage name="phone" component="span" className={s.error} />
+            </div>
 
-          <div className={s.wrap}>
-            <Field
-              type="password"
-              name="password"
-              placeholder="Password"
-              className={s.input}
-            />
-            <ErrorMessage
-              name="password"
-              component="span"
-              className={s.error}
-            />
+            <div className={s.wrap}>
+              <Field
+                type="password"
+                name="password"
+                placeholder="Password"
+                className={s.input}
+              />
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={s.error}
+              />
+            </div>
           </div>
-          <button type="submit" className={s.button}>
-            Register
-          </button>
-          <NavLink className={s.link}>Already have an account?</NavLink>
+          <div className={s.buttons}>
+            <button type="submit" className={s.button}>
+              Register
+            </button>
+            <NavLink className={s.link}>Already have an account?</NavLink>
+          </div>
         </Form>
       </Formik>
     </>
