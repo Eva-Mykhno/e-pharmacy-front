@@ -58,3 +58,25 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.container {
+  width: 100%;
+  max-width: 375px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    max-width: 768px;
+    padding: 28px 32px 32px 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1440px;
+    max-width: 1440px;
+    padding: 28px 128px 40px 128px;
+  }
+}

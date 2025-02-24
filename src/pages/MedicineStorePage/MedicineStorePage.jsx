@@ -1,5 +1,5 @@
 const MedicineStorePage = () => {
-  return <div>MedicineStorePage</div>;
+  return <main>MedicineStorePage</main>;
 };
 
 export default MedicineStorePage;
