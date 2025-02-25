@@ -66,6 +66,8 @@ img {
   width: 100%;
   max-width: 375px;
   padding: 20px;
+  background-color: var(--background);
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -80,6 +82,6 @@ img {
   .container {
     width: 1440px;
     max-width: 1440px;
-    padding: 28px 128px 40px 128px;
+    padding: 28px 100px 40px 100px;
   }
 }

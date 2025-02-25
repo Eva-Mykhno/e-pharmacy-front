@@ -1,11 +1,59 @@
 .info {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  width: 100vw;
+  padding-top: 56px;
+
+  background-image: image-set(
+    url("../../../public/img/round-pill-1x.webp") type("image/webp"),
+    url("../../../public/img/round-pill-1x.png") type("image/png")
+  );
+  background-repeat: no-repeat;
+  background-position: top 0 right 25px;
+  background-size: 95px 93px;
 }
 
 .text {
+  color: var(--black);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.21;
 }
 
 .span {
+  color: var(--green);
+}
+
+@media (min-resolution: 192dpi) {
+  .info {
+    background-image: image-set(
+      url("../../../public/img/round-pill-2x.webp") type("image/webp"),
+      url("../../../public/img/round-pill-2x.png") type("image/png")
+    );
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .info {
+    width: 335px;
+    background-position: top 0 right 40px;
+    background-size: 95px 93px;
+  }
+
+  .text {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .info {
+    padding-top: 104px;
+    width: 614px;
+    background-position: top 0 right 40px;
+    background-size: 179px 175px;
+  }
+
+  .text {
+    width: 600px;
+    font-size: 54px;
+    line-height: 1.11;
+  }
 }

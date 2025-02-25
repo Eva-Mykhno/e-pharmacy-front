@@ -1,4 +1,3 @@
-import RegisterForm from "../RegisterForm/REgisterForm";
 import s from "./MainContent.module.css";
 
 const MainContent = () => {
@@ -8,7 +7,6 @@ const MainContent = () => {
         Your medication, delivered Say goodbye to all{" "}
         <span className={s.span}>your healthcare</span> worries with us
       </p>
-      <RegisterForm />
     </section>
   );
 };
