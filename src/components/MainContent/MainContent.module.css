@@ -3,8 +3,8 @@
   padding-top: 56px;
 
   background-image: image-set(
-    url("../../../public/img/round-pill-1x.webp") type("image/webp"),
-    url("../../../public/img/round-pill-1x.png") type("image/png")
+    url("/img/round-pill-1x.webp") type("image/webp"),
+    url("/img/round-pill-1x.png") type("image/png")
   );
   background-repeat: no-repeat;
   background-position: top 0 right 25px;
@@ -25,8 +25,8 @@
 @media (min-resolution: 192dpi) {
   .info {
     background-image: image-set(
-      url("../../../public/img/round-pill-2x.webp") type("image/webp"),
-      url("../../../public/img/round-pill-2x.png") type("image/png")
+      url("/img/round-pill-2x.webp") type("image/webp"),
+      url("/img/round-pill-2x.png") type("image/png")
     );
   }
 }

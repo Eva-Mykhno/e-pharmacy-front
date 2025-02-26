@@ -61,9 +61,11 @@ const RegisterForm = () => {
         actions.resetForm();
         success();
       } else {
+        actions.resetForm();
         error(result.payload?.message || "Something went wrong... Try again!");
       }
     } catch (err) {
+      actions.resetForm();
       error(
         err.response?.data?.message || "Something went wrong... Try again!"
       );
@@ -127,7 +129,9 @@ const RegisterForm = () => {
             <button type="submit" className={s.button}>
               Register
             </button>
-            <NavLink className={s.link}>Already have an account?</NavLink>
+            <NavLink to="/login" className={s.link}>
+              Already have an account?
+            </NavLink>
           </div>
         </Form>
       </Formik>

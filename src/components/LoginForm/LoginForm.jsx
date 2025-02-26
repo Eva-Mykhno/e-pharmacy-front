@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { useEffect } from "react";
 import s from "./LoginForm.module.css";
+import { login } from "../../redux/auth/operations";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -24,30 +25,87 @@ const loginSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
+const success = () => toast.success("Login successful!");
+const error = (message) => toast.error(message);
+
 const LoginForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn, navigate]);
+
+  const initialLoginValues = {
+    email: "",
+    password: "",
+  };
+
+  const handleSubmit = async (values, actions) => {
+    try {
+      const result = await dispatch(login(values));
+
+      if (login.fulfilled.match(result)) {
+        actions.resetForm();
+        success();
+      } else {
+        actions.resetForm();
+        error(result.payload?.message ?? "Wrong email or password! Try again!");
+      }
+    } catch (err) {
+      actions.resetForm();
+      error(
+        err.response?.data?.message ?? "Something went wrong... Try again!"
+      );
+    }
+  };
+
   return (
-    <Formik>
-      <Form className={s.form}>
-        <div className={s.wrap}>
-          <Field
-            type="email"
-            name="email"
-            placeholder="Email address"
-            className={s.input}
-          />
-          <ErrorMessage name="email" component="span" className={s.error} />
-        </div>
-        <div className={s.wrap}>
-          <Field
-            type="password"
-            name="password"
-            placeholder="Password"
-            className={s.input}
-          />
-          <ErrorMessage name="password" component="span" className={s.error} />
-        </div>
-      </Form>
-    </Formik>
+    <>
+      <Toaster position="top-center" reverseOrder={true} />
+      <Formik
+        validationSchema={loginSchema}
+        initialValues={initialLoginValues}
+        onSubmit={handleSubmit}>
+        <Form className={s.form}>
+          <div className={s.inputs}>
+            <div className={s.wrap}>
+              <Field
+                type="email"
+                name="email"
+                placeholder="Email address"
+                className={s.input}
+              />
+              <ErrorMessage name="email" component="span" className={s.error} />
+            </div>
+            <div className={s.wrap}>
+              <Field
+                type="password"
+                name="password"
+                placeholder="Password"
+                className={s.input}
+              />
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={s.error}
+              />
+            </div>
+          </div>
+          <div className={s.buttons}>
+            <button type="submit" className={s.button}>
+              Log In
+            </button>
+            <NavLink to="/register" className={s.link}>
+              Don&rsquo;t have an account?
+            </NavLink>
+          </div>
+        </Form>
+      </Formik>
+    </>
   );
 };
 
