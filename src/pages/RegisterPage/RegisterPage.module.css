@@ -4,12 +4,12 @@
   flex-direction: column;
   gap: 50px;
   background-image: image-set(
-    url("../../../public/img/background-1x.webp") type("image/webp"),
-    url("../../../public/img/background-1x.png") type("image/png")
+    url("../../../public/img/back-mb-1x.webp") type("image/webp"),
+    url("../../../public/img/back-mb-1x.png") type("image/png")
   );
   background-repeat: no-repeat;
-  background-position: bottom -80px right -120px;
-  background-size: 310px 230px;
+  background-position: bottom 0 right 0;
+  background-size: 192px 154px;
 }
 
 .wrap {
@@ -21,8 +21,8 @@
 @media (min-resolution: 192dpi) {
   .info {
     background-image: image-set(
-      url("../../../public/img/background-2x.webp") type("image/webp"),
-      url("../../../public/img/background-2x.png") type("image/png")
+      url("../../../public/img/back-mb-2x.webp") type("image/webp"),
+      url("../../../public/img/back-mb-2x.png") type("image/png")
     );
   }
 }
@@ -31,8 +31,20 @@
   .page {
     height: 1024px;
     gap: 64px;
-    background-position: bottom -65px right -184px;
-    background-size: 464px 345px;
+    background-size: 275px 250px;
+    background-image: image-set(
+      url("../../../public/img/back-tb-1x.webp") type("image/webp"),
+      url("../../../public/img/back-tb-1x.png") type("image/png")
+    );
+  }
+
+  @media (min-resolution: 192dpi) {
+    .info {
+      background-image: image-set(
+        url("../../../public/img/back-tb-2x.webp") type("image/webp"),
+        url("../../../public/img/back-tb-2x.png") type("image/png")
+      );
+    }
   }
 
   .wrap {
