@@ -1,12 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { NavLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import s from "./RegisterForm.module.css";
+import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { useEffect } from "react";
 import { register } from "../../redux/auth/operations";
-import toast, { Toaster } from "react-hot-toast";
+import s from "./RegisterForm.module.css";
 
 const registerSchema = Yup.object().shape({
   name: Yup.string()

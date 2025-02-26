@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import Logo from "../../components/Logo/Logo";
 import MainContent from "../../components/MainContent/MainContent";
-import s from "./RegisterPage.module.css";
 import RegisterForm from "../../components/RegisterForm/REgisterForm";
+import s from "./RegisterPage.module.css";
 
 const RegisterPage = () => {
   return (
