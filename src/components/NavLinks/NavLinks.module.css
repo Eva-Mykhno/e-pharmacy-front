@@ -1,0 +1,25 @@
+.footer .navList {
+  display: flex !important;
+  flex-direction: row;
+  gap: 32px !important;
+}
+
+.footer .item {
+  color: var(--background);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.28;
+}
+
+@media screen and (min-width: 768px) {
+  .footer .item {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footer .navList {
+    gap: 50px;
+  }
+}
