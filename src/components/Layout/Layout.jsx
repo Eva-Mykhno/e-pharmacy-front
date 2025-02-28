@@ -27,13 +27,11 @@ const Layout = () => {
     }
   }, [dispatch, isRefreshing, isLoggedIn, token]);
   return (
-    <div className="container">
-      <LogoProvider>
-        <Header />
-        <Outlet />
-        <Footer />
-      </LogoProvider>
-    </div>
+    <LogoProvider>
+      <Header />
+      <Outlet />
+      <Footer />
+    </LogoProvider>
   );
 };
 

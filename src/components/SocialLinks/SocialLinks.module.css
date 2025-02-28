@@ -1,6 +1,5 @@
 .list {
-  display: flex;
-  gap: 12px;
+  display: none;
 }
 
 .item {
@@ -29,4 +28,11 @@
 .icon:focus,
 .icon:hover {
   opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: flex;
+    gap: 12px;
+  }
 }
