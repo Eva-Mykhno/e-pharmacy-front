@@ -6,4 +6,6 @@
   width: 261px;
   font-size: 14px;
   color: var(--background);
+  font-weight: 400;
+  line-height: 1.28;
 }

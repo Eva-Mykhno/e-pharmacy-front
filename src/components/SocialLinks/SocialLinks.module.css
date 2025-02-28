@@ -1,0 +1,32 @@
+.list {
+  display: flex;
+  gap: 12px;
+}
+
+.item {
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  color: var(--background);
+  border-radius: 10px;
+  border: 1px solid var(--border-social);
+  transition: all 0.3s ease;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  fill: var(--background);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.item:focus,
+.item:hover {
+  border: 1px solid var(--border-social-hover);
+}
+
+.icon:focus,
+.icon:hover {
+  opacity: 1;
+}
