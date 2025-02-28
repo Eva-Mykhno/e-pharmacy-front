@@ -17,6 +17,11 @@
   --total: #e7f1ed;
   --border-social: rgba(247, 248, 250, 0.1);
   --border-social-hover: rgba(247, 248, 250, 0.5);
+  --background-banner: #fdfdfd;
+  --border-banner: #f1f1f1;
+  --background-number: rgba(231, 241, 237, 0.4);
+  --banner: #252539;
+  --link-banner: #93939a;
 }
 
 html {
