@@ -1,3 +1,9 @@
-.footer {
+.wrap {
   background-color: var(--green);
+}
+
+.text {
+  width: 261px;
+  font-size: 14px;
+  color: var(--background);
 }

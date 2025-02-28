@@ -8,11 +8,9 @@ import FooterBottom from "../FooterBottom/FooterBottom";
 
 const Footer = () => {
   return (
-    // <footer className={clsx(s.footer, s.wrap)}>
-
-    <footer className={s.footer}>
+    <footer className={s.wrap}>
       <NavLink to="/home">
-        <Logo />
+        <Logo color="white" />
       </NavLink>
       <p className={s.text}>
         Get the medicine to help you feel better, get back to your active life,

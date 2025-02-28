@@ -1,10 +1,10 @@
-.footer .navList {
-  display: flex !important;
+.navList.footer {
+  display: flex;
   flex-direction: row;
-  gap: 32px !important;
+  gap: 32px;
 }
 
-.footer .item {
+.item.footer {
   color: var(--background);
   font-size: 14px;
   font-weight: 600;
@@ -12,14 +12,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  .footer .item {
+  .item.footer {
     font-size: 16px;
     line-height: 1.25;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .footer .navList {
+  .navList.footer {
     gap: 50px;
   }
 }

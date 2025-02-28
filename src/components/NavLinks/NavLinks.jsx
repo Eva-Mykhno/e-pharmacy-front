@@ -19,7 +19,7 @@ const NavLinks = ({ variant }) => {
             <li key={to}>
               <NavLink
                 to={to}
-                className={clsx(s.item, { [s.active]: isActive })}>
+                className={clsx(s.item, s[variant], { [s.active]: isActive })}>
                 {label}
               </NavLink>
             </li>
