@@ -12,6 +12,7 @@
   --yellow: #ffc531;
   --main: #93939a;
   --border-input: rgba(29, 30, 33, 0.2);
+  --shadow: rgba(29, 30, 33, 0.3);
   --placeholder: rgba(29, 30, 33, 0.4);
   --total: #e7f1ed;
   --border-social: rgba(247, 248, 250, 0.1);
@@ -41,7 +42,8 @@ p {
   margin: 0;
 }
 
-ul {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -70,6 +72,7 @@ img {
   padding: 20px;
   background-color: var(--background);
   margin: 0 auto;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {

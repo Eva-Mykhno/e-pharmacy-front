@@ -1,0 +1,119 @@
+.hero {
+  margin-left: calc(-1 * (100vw - 100%) / 2);
+  position: relative;
+  width: 100vw;
+  height: 812px;
+  background-color: var(--green);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 375px;
+  height: 100%;
+  background-image: image-set(
+    url("/img/pills-1x.webp") type("image/webp"),
+    url("/img/pills-1x.png") type("image/png")
+  );
+  background-repeat: no-repeat;
+  background-position: top 216px left 32px;
+  background-size: 280px 264px;
+}
+
+.info {
+  max-width: 280px;
+  margin: 0 auto;
+  padding-top: 180px;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  width: 280px;
+  color: var(--white);
+  text-shadow: 0px 4px 85px var(--shadow);
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.text {
+  margin-top: 20px;
+  margin-left: 138px;
+  width: 156px;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+}
+
+@media (min-resolution: 192dpi) {
+  .hero::before {
+    background-image: image-set(
+      url("/img/pills-2x.webp") type("image/webp"),
+      url("/img/pills-2x.png") type("image/png")
+    );
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .hero::before {
+    background-size: 306px 295px;
+  }
+
+  .info {
+    padding-top: 200px;
+    max-width: 335px;
+  }
+
+  .text {
+    margin-left: 178px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    height: 1024px;
+  }
+
+  .hero::before {
+    max-width: 768px;
+    background-position: top 206px left 112px;
+    background-size: 502px 484px;
+  }
+
+  .info {
+    max-width: 609px;
+    padding-top: 310px;
+  }
+
+  .title {
+    width: 609px;
+    font-size: 74px;
+  }
+
+  .text {
+    margin-top: 24px;
+    margin-left: 350px;
+    width: 207px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .hero {
+    height: 800px;
+  }
+  .hero::before {
+    max-width: 1440px;
+    background-position: top 94px left 436px;
+  }
+
+  .info {
+    padding-top: 200px;
+  }
+}
