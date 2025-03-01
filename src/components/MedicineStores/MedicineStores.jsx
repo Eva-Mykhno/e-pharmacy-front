@@ -40,23 +40,28 @@ const MedicineStores = () => {
         <ul className={s.list}>
           {randomNearests.map((nearest) => (
             <li key={nearest._id} className={s.item}>
-              <div className={s.top}>
+              <div className={s.header}>
                 <h3 className={s.name}>{nearest.name}</h3>
-                <div className={s.wrapper}>
-                  <p className={s.raiting}>{nearest.raiting}</p>
+                <div className={s.block}>
+                  <div className={s.wrap}>
+                    <svg className={s.star}>
+                      <use href={`${sprite}#icon-star`} />
+                    </svg>
+                    <p className={s.rating}>{nearest.rating}</p>
+                  </div>
                   <p className={nearest.isOpen === "open" ? s.open : s.close}>
                     {nearest.isOpen}
                   </p>
                 </div>
               </div>
-              <div className={s.wrap}>
-                <div className={s.iconAndText}>
+              <div className={s.wrapper}>
+                <div className={s.info}>
                   <svg className={s.icon}>
                     <use href={`${sprite}#icon-map-pin`} />
                   </svg>
                   <p className={s.address}>{nearest.address}</p>
                 </div>
-                <div className={s.iconAndText}>
+                <div className={s.info}>
                   <svg className={s.icon}>
                     <use href={`${sprite}#icon-phone`} />
                   </svg>
