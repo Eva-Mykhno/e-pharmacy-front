@@ -22,6 +22,7 @@
   --background-number: rgba(231, 241, 237, 0.4);
   --banner: #252539;
   --link-banner: #93939a;
+  --border-link: rgba(241, 241, 241, 0.5);
 }
 
 html {

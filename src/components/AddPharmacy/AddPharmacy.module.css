@@ -1,0 +1,193 @@
+/* .section {
+  width: 100%;
+  max-width: 335px;
+  height: 674px;
+  padding: 20px;
+  border-radius: 32px;
+  background-color: var(--green);
+  background-image: image-set(
+    url("/img/girl-mobile-1x.webp") type("image/webp"),
+    url("/img/girl-mobile-1x.png") type("image/png")
+  );
+  background-repeat: no-repeat;
+  background-position: bottom 20px right 20px;
+  background-size: 335px 310px;
+} */
+
+.section {
+  position: relative;
+  width: 100%;
+  max-width: 335px;
+  height: 674px;
+  padding: 20px;
+  border-radius: 32px;
+  background-color: var(--green);
+  overflow: hidden; /* Обрезаем все, что выходит за границы */
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 310px;
+  height: 335px;
+  background-image: image-set(
+    url("/img/girl-mobile-1x.webp") type("image/webp"),
+    url("/img/girl-mobile-1x.png") type("image/png")
+  );
+  background-size: 310px 335px;
+  border-radius: 0 24px 24px 0;
+  background-repeat: no-repeat;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  background-color: var(--green);
+  width: 342px;
+  height: 578px;
+  border-radius: 50%;
+  right: 243px;
+  bottom: -106px;
+  z-index: 2;
+}
+
+.title {
+  margin-bottom: 20px;
+  max-width: 288px;
+  color: var(--border-banner);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.14;
+}
+
+.text {
+  margin-bottom: 40px;
+  max-width: 291px;
+  color: var(--border-banner);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+}
+
+.link {
+  padding: 13px 32px;
+  border-radius: 60px;
+  border: 1px solid var(--border-link);
+  color: var(--border-banner);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+}
+
+.link:hover,
+.link.focus {
+  border: 1px solid var(--main);
+}
+
+@media (min-resolution: 192dpi) {
+  .section::before {
+    background-image: image-set(
+      url("/img/girl-mobile-2x.webp") type("image/webp"),
+      url("/img/girl-mobile-2x.png") type("image/png")
+    );
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .section::after {
+    right: 283px;
+    bottom: -106px;
+  }
+
+  .title {
+    margin: 20px 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    max-width: 704px;
+    width: 704px;
+    height: 911px;
+    padding: 40px 48px;
+  }
+
+  .section::before {
+    bottom: 40px;
+    right: 48px;
+    width: 633px;
+    height: 406px;
+    background-image: image-set(
+      url("/img/girl-1x.webp") type("image/webp"),
+      url("/img/girl-1x.png") type("image/png")
+    );
+    background-size: 633px 406px;
+  }
+
+  .section::after {
+    width: 700px;
+    height: 700px;
+    right: 583px;
+    bottom: -110px;
+  }
+
+  .title {
+    width: 604px;
+    max-width: 604px;
+    margin-top: 64px;
+    margin-bottom: 24px;
+    font-size: 48px;
+  }
+
+  .text {
+    width: 484px;
+    max-width: 484px;
+    font-size: 16px;
+  }
+
+  .link {
+    padding: 13px 50px;
+  }
+
+  @media (min-resolution: 192dpi) {
+    .section::before {
+      background-image: image-set(
+        url("/img/girl-2x.webp") type("image/webp"),
+        url("/img/girl-2x.png") type("image/png")
+      );
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section {
+    padding: 40px;
+    padding-left: 80px;
+    width: 1248px;
+    max-width: 1248px;
+    height: 486px;
+  }
+
+  .section::after {
+    right: 576px;
+  }
+
+  .title {
+    width: 490px;
+    max-width: 490px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .text {
+    position: relative;
+    z-index: 3;
+  }
+
+  .link {
+    position: relative;
+    z-index: 3;
+  }
+}
