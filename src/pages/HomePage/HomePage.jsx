@@ -4,6 +4,7 @@ import MainBanner from "../../components/MainBanner/MainBanner";
 import PromoBanners from "../../components/PromoBanners/PromoBanners";
 import MedicineStores from "../../components/MedicineStores/MedicineStores";
 import AddPharmacy from "../../components/AddPharmacy/AddPharmacy";
+import Features from "../../components/Features/Features";
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
       <PromoBanners />
       <MedicineStores />
       <AddPharmacy />
+      <Features />
     </main>
   );
 };

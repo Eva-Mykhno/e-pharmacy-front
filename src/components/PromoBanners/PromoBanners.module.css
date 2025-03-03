@@ -58,7 +58,7 @@
 }
 
 .link {
-  color: var(--link-banner);
+  color: var(--main);
   font-size: 13px;
   font-weight: 400;
   line-height: 1.4;
