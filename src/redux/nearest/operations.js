@@ -8,7 +8,9 @@ export const fetchNearests = createAsyncThunk(
       const { data } = await api.get("/stores/nearest");
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data || "User not found");
+      return thunkAPI.rejectWithValue(
+        error.response?.data || "Nearests pharmacies not found"
+      );
     }
   }
 );

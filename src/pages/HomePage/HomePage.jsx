@@ -5,6 +5,7 @@ import PromoBanners from "../../components/PromoBanners/PromoBanners";
 import MedicineStores from "../../components/MedicineStores/MedicineStores";
 import AddPharmacy from "../../components/AddPharmacy/AddPharmacy";
 import Features from "../../components/Features/Features";
+import Reviews from "../../components/Reviews/Reviews";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <MedicineStores />
       <AddPharmacy />
       <Features />
+      <Reviews />
     </main>
   );
 };
