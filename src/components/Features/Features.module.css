@@ -68,8 +68,17 @@
     padding-top: 73px;
     padding-bottom: 65px;
   }
+
   .list {
     gap: 60px;
-    animation: marquee 12s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(120%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
   }
 }
