@@ -12,6 +12,9 @@ const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const MedicineStorePage = lazy(() =>
   import("../../pages/MedicineStorePage/MedicineStorePage")
 );
+const MedicinePage = lazy(() =>
+  import("../../pages/MedicinePage/MedicinePage")
+);
 
 const App = () => {
   return (
@@ -22,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="/home" element={<HomePage />} />
           <Route path="/medicine-store" element={<MedicineStorePage />} />
+          <Route path="/medicine" element={<MedicinePage />} />
         </Route>
       </Routes>
     </Suspense>

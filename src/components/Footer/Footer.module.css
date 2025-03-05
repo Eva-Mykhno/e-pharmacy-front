@@ -52,6 +52,8 @@
 @media screen and (min-width: 1440px) {
   .footer {
     padding-top: 40px;
+    padding-left: 128px;
+    padding-right: 128px;
   }
 
   .links {

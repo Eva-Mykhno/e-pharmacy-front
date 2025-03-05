@@ -3,6 +3,7 @@ import { authReducer } from "./auth/slice";
 import { nearestsReducer } from "./nearest/slice";
 import { reviewsReducer } from "./reviews/slice";
 import { pharmaciesReducer } from "./pharmacies/slice";
+import { productsReducer } from "./products/slice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     nearests: nearestsReducer,
     reviews: reviewsReducer,
     pharmacies: pharmaciesReducer,
+    products: productsReducer,
   },
 });
 export default store;

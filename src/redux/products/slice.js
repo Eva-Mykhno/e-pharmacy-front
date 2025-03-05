@@ -1,37 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPharmacies } from "./operations";
+import { fetchProducts } from "./operations";
 
 const initialState = {
-  pharmacies: [],
+  products: [],
   currentPage: 1,
   totalPages: 1,
   perPage: null,
   isLoading: false,
   error: null,
 };
-const pharmaciesSlice = createSlice({
-  name: "pharmacies",
+const productsSlice = createSlice({
+  name: "products",
   initialState,
   reducers: {
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
-    setPharmaciesPerPage: (state, action) => {
+    setProductsPerPage: (state, action) => {
       state.perPage = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPharmacies.pending, (state) => {
+      .addCase(fetchProducts.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(fetchPharmacies.fulfilled, (state, action) => {
-        state.pharmacies = action.payload.pharmacies;
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.products = action.payload.products;
         state.totalPages = action.payload.totalPages || 1;
         state.isLoading = false;
       })
-      .addCase(fetchPharmacies.rejected, (state, action) => {
+      .addCase(fetchProducts.rejected, (state, action) => {
         console.error("Fetch error:", action.payload);
         state.error = action.payload;
         state.isLoading = false;
@@ -39,6 +39,6 @@ const pharmaciesSlice = createSlice({
   },
 });
 
-export const { setCurrentPage, setPharmaciesPerPage } = pharmaciesSlice.actions;
+export const { setCurrentPage, setProductsPerPage } = productsSlice.actions;
 
-export const pharmaciesReducer = pharmaciesSlice.reducer;
+export const productsReducer = productsSlice.reducer;
