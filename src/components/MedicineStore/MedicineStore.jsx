@@ -15,6 +15,7 @@ import {
 } from "../../redux/pharmacies/slice";
 import { fetchPharmacies } from "../../redux/pharmacies/operations";
 import Loader from "../Loader/Loader";
+import Pagination from "../Pagination/Pagination";
 
 const sprite = "/sprite.svg";
 
@@ -64,106 +65,54 @@ const MedicineStore = () => {
 
       {isLoading && <Loader />}
       {!isLoading && pharmacies.length > 0 && (
-        <>
-          <ul className={s.list}>
-            {pharmacies.map((pharmacy) => (
-              <li key={pharmacy._id} className={s.item}>
-                <div className={s.info}>
-                  <p className={s.name}>{pharmacy.name}</p>
+        <ul className={s.list}>
+          {pharmacies.map((pharmacy) => (
+            <li key={pharmacy._id} className={s.item}>
+              <div className={s.info}>
+                <p className={s.name}>{pharmacy.name}</p>
 
-                  <div className={s.contact}>
-                    <svg className={s.icon}>
-                      <use href={`${sprite}#icon-map-pin`} />
-                    </svg>
-                    <p className={s.address}>{pharmacy.address}</p>
-                  </div>
-
-                  <p className={s.city}>{pharmacy.city}</p>
-
-                  <div className={s.contact}>
-                    <svg className={s.icon}>
-                      <use href={`${sprite}#icon-phone`} />
-                    </svg>
-                    <p className={s.address}>{pharmacy.phone}</p>
-                  </div>
-
-                  <NavLink to="/medicine" className={s.link}>
-                    Visit Store
-                  </NavLink>
+                <div className={s.contact}>
+                  <svg className={s.icon}>
+                    <use href={`${sprite}#icon-map-pin`} />
+                  </svg>
+                  <p className={s.address}>{pharmacy.address}</p>
                 </div>
 
-                <div className={s.wrap}>
-                  <div className={s.block}>
-                    <svg className={s.star}>
-                      <use href={`${sprite}#icon-star`} />
-                    </svg>
-                    <p className={s.rating}>{pharmacy.rating}</p>
-                  </div>
+                <p className={s.city}>{pharmacy.city}</p>
 
-                  <p className={pharmacy.isOpen === "open" ? s.open : s.close}>
-                    {pharmacy.isOpen}
-                  </p>
+                <div className={s.contact}>
+                  <svg className={s.icon}>
+                    <use href={`${sprite}#icon-phone`} />
+                  </svg>
+                  <p className={s.address}>{pharmacy.phone}</p>
                 </div>
-              </li>
-            ))}
-          </ul>
 
-          <div className={s.pagination}>
-            <div className={s.buttons}>
-              <button
-                onClick={() => handlePageChange(1)}
-                disabled={currentPage === 1}
-                className={s.narrows}>
-                <svg className={s.narrow}>
-                  <use href={`${sprite}#icon-backward`} />
-                </svg>
-              </button>
+                <NavLink to="/medicine" className={s.link}>
+                  Visit Store
+                </NavLink>
+              </div>
 
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={s.narrows}>
-                <svg className={s.narrow}>
-                  <use href={`${sprite}#icon-chevron-left`} />
-                </svg>
-              </button>
-            </div>
+              <div className={s.wrap}>
+                <div className={s.block}>
+                  <svg className={s.star}>
+                    <use href={`${sprite}#icon-star`} />
+                  </svg>
+                  <p className={s.rating}>{pharmacy.rating}</p>
+                </div>
 
-            <div className={s.buttons}>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <button
-                    key={page}
-                    onClick={() => handlePageChange(page)}
-                    className={currentPage === page ? s.active : s.number}>
-                    {page}
-                  </button>
-                )
-              )}
-            </div>
-
-            <div className={s.buttons}>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={s.narrows}>
-                <svg className={s.narrow}>
-                  <use href={`${sprite}#icon-chevron-right`} />
-                </svg>
-              </button>
-
-              <button
-                onClick={() => handlePageChange(totalPages)}
-                disabled={currentPage === totalPages}
-                className={s.narrows}>
-                <svg className={s.narrow}>
-                  <use href={`${sprite}#icon-forward`} />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </>
+                <p className={pharmacy.isOpen === "open" ? s.open : s.close}>
+                  {pharmacy.isOpen}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
       )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 };
