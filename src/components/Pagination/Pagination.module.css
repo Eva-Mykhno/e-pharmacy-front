@@ -37,6 +37,12 @@
   gap: 4px;
 }
 
+.numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .active {
   width: 35px;
   height: 35px;
@@ -57,4 +63,40 @@
   color: var(--black);
   font-size: 14px;
   font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination {
+    margin-bottom: 120px;
+    gap: 24px;
+  }
+
+  .buttons {
+    gap: 8px;
+  }
+
+  .numbers {
+    gap: 10px;
+  }
+
+  .narrows {
+    width: 44px;
+    height: 44px;
+  }
+
+  .narrow {
+    width: 24px;
+    height: 24px;
+  }
+
+  .active {
+    width: 44px;
+    height: 44px;
+  }
+
+  .number {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
 }

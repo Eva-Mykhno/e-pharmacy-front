@@ -53,7 +53,7 @@ const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
         </button>
       </div>
 
-      <div className={s.buttons}>{renderPagination()}</div>
+      <div className={s.numbers}>{renderPagination()}</div>
 
       <div className={s.buttons}>
         <button
