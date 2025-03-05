@@ -13,6 +13,8 @@ import { setCurrentPage, setProductsPerPage } from "../../redux/products/slice";
 import { fetchProducts } from "../../redux/products/operations";
 import s from "./Medicine.module.css";
 import Loader from "../Loader/Loader";
+import LazyImage from "../LazyImage/LazyImage";
+import Filters from "../Filters/Filters";
 
 const Medicine = () => {
   const dispatch = useDispatch();
@@ -60,20 +62,32 @@ const Medicine = () => {
   return (
     <div className={s.wrapper}>
       <h1 className={s.title}>Medicine</h1>
-
+      <Filters />
       {isLoading && <Loader />}
       {!isLoading && products.length > 0 && (
         <ul className={s.list}>
           {products.map((product) => (
             <li key={product._id} className={s.item}>
-              <img src={product.photo} alt={product.name} className={s.image} />
-              <p className={s.name}>{product.name}</p>
-              <p className={s.price}>{product.price}</p>
-              <p className={s.supplier}>{product.suppliers}</p>
-              <button className={s.button}>Add to cart</button>
-              <NavLink to="/product" className={s.link}>
-                Details
-              </NavLink>
+              <LazyImage
+                src={product.photo}
+                alt={product.name}
+                className={s.image}
+              />
+
+              <div className={s.info}>
+                <div className={s.left}>
+                  <p className={s.name}>{product.name}</p>
+                  <p className={s.supplier}>{product.suppliers}</p>
+                  <button className={s.button}>Add to cart</button>
+                </div>
+
+                <div className={s.right}>
+                  <p className={s.price}>৳{product.price}</p>
+                  <NavLink to="/product" className={s.link}>
+                    Details
+                  </NavLink>
+                </div>
+              </div>
             </li>
           ))}
         </ul>
