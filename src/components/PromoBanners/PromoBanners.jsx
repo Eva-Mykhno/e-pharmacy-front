@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import s from "./PromoBanners.module.css";
 
@@ -14,7 +15,7 @@ const PromoBanners = () => {
       number: 2,
       title: "Secure delivery",
       discount: "100%",
-      link: "/#Features",
+      link: "#features",
       linkText: "Read more",
     },
     {
@@ -26,6 +27,14 @@ const PromoBanners = () => {
     },
   ];
 
+  const scrollToSection = useCallback((event) => {
+    event.preventDefault();
+    const section = document.getElementById("features");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   return (
     <ol className={s.list}>
       {banners.map(({ number, title, discount, link, linkText }) => (
@@ -36,9 +45,15 @@ const PromoBanners = () => {
           </div>
           <div className={s.bottom}>
             <p className={s.text}>{discount}</p>
-            <NavLink to={link} className={s.link}>
-              {linkText}
-            </NavLink>
+            {link === "#features" ? (
+              <a href={link} onClick={scrollToSection} className={s.link}>
+                {linkText}
+              </a>
+            ) : (
+              <NavLink to={link} className={s.link}>
+                {linkText}
+              </NavLink>
+            )}
           </div>
         </li>
       ))}

@@ -14,7 +14,7 @@ const HomePage = () => {
       <PromoBanners />
       <MedicineStores />
       <AddPharmacy />
-      <Features />
+      <Features id="features" />
       <Reviews />
     </main>
   );

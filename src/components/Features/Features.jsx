@@ -4,7 +4,7 @@ const sprite = "/sprite.svg";
 
 const Features = () => {
   return (
-    <section className={s.marquee}>
+    <section id="features" className={s.marquee}>
       <ul className={s.list}>
         <li className={s.item}>
           <svg className={s.icon}>

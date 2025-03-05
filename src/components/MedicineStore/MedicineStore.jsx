@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import s from "./MedicineStore.module.css";
 import {
   selectCurrentPage,
@@ -58,7 +59,7 @@ const MedicineStore = () => {
   };
 
   return (
-    <div className={s.container}>
+    <div className={s.wrapper}>
       <h1 className={s.title}>Medicine Store</h1>
 
       {isLoading && <Loader />}
@@ -77,7 +78,7 @@ const MedicineStore = () => {
                     <p className={s.address}>{pharmacy.address}</p>
                   </div>
 
-                  <p className={s.address}>{pharmacy.city}</p>
+                  <p className={s.city}>{pharmacy.city}</p>
 
                   <div className={s.contact}>
                     <svg className={s.icon}>
@@ -85,7 +86,12 @@ const MedicineStore = () => {
                     </svg>
                     <p className={s.address}>{pharmacy.phone}</p>
                   </div>
+
+                  <NavLink to="/medicine" className={s.link}>
+                    Visit Store
+                  </NavLink>
                 </div>
+
                 <div className={s.wrap}>
                   <div className={s.block}>
                     <svg className={s.star}>
@@ -103,56 +109,58 @@ const MedicineStore = () => {
           </ul>
 
           <div className={s.pagination}>
-            <button
-              onClick={() => handlePageChange(1)}
-              disabled={currentPage === 1}
-              className={s.narrows}>
-              <svg className={s.narrow}>
-                <use href={`${sprite}#icon-chevron-left`} />
-              </svg>
-              <svg className={s.narrow}>
-                <use href={`${sprite}#icon-chevron-left`} />
-              </svg>
-            </button>
-
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              className={s.narrows}>
-              <svg className={s.narrow}>
-                <use href={`${sprite}#icon-chevron-left`} />
-              </svg>
-            </button>
-
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <div className={s.buttons}>
               <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={currentPage === page ? s.active : s.number}>
-                {page}
+                onClick={() => handlePageChange(1)}
+                disabled={currentPage === 1}
+                className={s.narrows}>
+                <svg className={s.narrow}>
+                  <use href={`${sprite}#icon-backward`} />
+                </svg>
               </button>
-            ))}
 
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className={s.narrows}>
-              <svg className={s.narrow}>
-                <use href={`${sprite}#icon-chevron-right`} />
-              </svg>
-            </button>
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={s.narrows}>
+                <svg className={s.narrow}>
+                  <use href={`${sprite}#icon-chevron-left`} />
+                </svg>
+              </button>
+            </div>
 
-            <button
-              onClick={() => handlePageChange(totalPages)}
-              disabled={currentPage === totalPages}
-              className={s.narrows}>
-              <svg className={s.narrow}>
-                <use href={`${sprite}#icon-chevron-right`} />
-              </svg>
-              <svg className={s.narrow}>
-                <use href={`${sprite}#icon-chevron-right`} />
-              </svg>
-            </button>
+            <div className={s.buttons}>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={currentPage === page ? s.active : s.number}>
+                    {page}
+                  </button>
+                )
+              )}
+            </div>
+
+            <div className={s.buttons}>
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={s.narrows}>
+                <svg className={s.narrow}>
+                  <use href={`${sprite}#icon-chevron-right`} />
+                </svg>
+              </button>
+
+              <button
+                onClick={() => handlePageChange(totalPages)}
+                disabled={currentPage === totalPages}
+                className={s.narrows}>
+                <svg className={s.narrow}>
+                  <use href={`${sprite}#icon-forward`} />
+                </svg>
+              </button>
+            </div>
           </div>
         </>
       )}
