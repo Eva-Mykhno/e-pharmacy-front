@@ -40,7 +40,7 @@
 
 .input {
   width: 280px;
-  padding: 14px;
+  padding: 13px 14px 13px 18px;
   outline: none;
   border-radius: 60px;
   border: 1px solid var(--border-input);
@@ -102,5 +102,40 @@
 
   .input {
     width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    padding: 32px 0;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .label {
+    width: 214px;
+  }
+
+  .option {
+    width: 214px;
+  }
+
+  .input {
+    width: 214px;
+  }
+
+  .button {
+    margin-left: -4px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .form {
+    padding: 40px 0;
+    gap: 14px;
+  }
+
+  .button {
+    margin-left: -6px;
   }
 }

@@ -88,10 +88,10 @@ const Filters = () => {
           </label>
 
           <button className={s.button} type="submit">
-            <p className={s.text}>Filter</p>
             <svg className={s.filter}>
               <use href={`${sprite}#icon-filter`} />
             </svg>
+            <p className={s.text}>Filter</p>
           </button>
         </Form>
       )}
