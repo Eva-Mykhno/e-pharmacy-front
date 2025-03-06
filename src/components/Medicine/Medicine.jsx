@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   selectCurrentPage,
+  selectFilters,
   selectIsLoading,
   selectPerPage,
   selectProducts,
@@ -23,6 +24,7 @@ const Medicine = () => {
   const totalPages = useSelector(selectTotalPages);
   const isLoading = useSelector(selectIsLoading);
   const perPage = useSelector(selectPerPage);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
     const updateProductsPerPage = () => {
@@ -51,7 +53,7 @@ const Medicine = () => {
 
   useEffect(() => {
     dispatch(fetchProducts({ page: currentPage, perPage }));
-  }, [dispatch, currentPage, perPage]);
+  }, [dispatch, currentPage, perPage, filters]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -93,11 +95,13 @@ const Medicine = () => {
         </ul>
       )}
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {products.length >= perPage && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
