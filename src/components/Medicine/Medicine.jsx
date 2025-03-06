@@ -85,7 +85,7 @@ const Medicine = () => {
 
                 <div className={s.right}>
                   <p className={s.price}>৳{product.price}</p>
-                  <NavLink to="/product" className={s.link}>
+                  <NavLink to={`/products/${product._id}`} className={s.link}>
                     Details
                   </NavLink>
                 </div>
