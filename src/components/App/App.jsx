@@ -15,6 +15,7 @@ const MedicineStorePage = lazy(() =>
 const MedicinePage = lazy(() =>
   import("../../pages/MedicinePage/MedicinePage")
 );
+const ProductPage = lazy(() => import("../../pages/ProductPage/ProductPage"));
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/home" element={<HomePage />} />
           <Route path="/medicine-store" element={<MedicineStorePage />} />
           <Route path="/medicine" element={<MedicinePage />} />
+          <Route path="/product" element={<ProductPage />} />
         </Route>
       </Routes>
     </Suspense>
