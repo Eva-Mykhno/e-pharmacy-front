@@ -32,7 +32,6 @@ const pharmaciesSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchPharmacies.rejected, (state, action) => {
-        console.error("Fetch error:", action.payload);
         state.error = action.payload;
         state.isLoading = false;
       });

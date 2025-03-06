@@ -8,7 +8,12 @@ const initialState = {
   perPage: null,
   isLoading: false,
   error: null,
+  filters: {
+    name: "",
+    category: "",
+  },
 };
+
 const productsSlice = createSlice({
   name: "products",
   initialState,
@@ -18,6 +23,9 @@ const productsSlice = createSlice({
     },
     setProductsPerPage: (state, action) => {
       state.perPage = action.payload;
+    },
+    setFilters: (state, action) => {
+      state.filters = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -32,13 +40,12 @@ const productsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        console.error("Fetch error:", action.payload);
         state.error = action.payload;
         state.isLoading = false;
       });
   },
 });
 
-export const { setCurrentPage, setProductsPerPage } = productsSlice.actions;
-
+export const { setCurrentPage, setProductsPerPage, setFilters } =
+  productsSlice.actions;
 export const productsReducer = productsSlice.reducer;
