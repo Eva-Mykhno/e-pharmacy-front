@@ -1,5 +1,12 @@
+import Description from "../Description/Description";
+import s from "./TabsContainer.module.css";
+
 const TabsContainer = () => {
-  return <div>TabsContainer</div>;
+  return (
+    <div className={s.wrapper}>
+      <Description />
+    </div>
+  );
 };
 
 export default TabsContainer;

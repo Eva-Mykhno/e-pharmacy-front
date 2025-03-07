@@ -9,6 +9,7 @@ import {
 import Loader from "../Loader/Loader";
 import LazyImage from "../LazyImage/LazyImage";
 import s from "./ProductOverview.module.css";
+import TabsContainer from "../TabsContainer/TabsContainer";
 
 const sprite = "/sprite.svg";
 
@@ -38,30 +39,35 @@ const ProductOverview = () => {
 
   return (
     <section className={s.section}>
-      <LazyImage src={product.photo} alt={product.name} className={s.image} />
+      <div className={s.block}>
+        <LazyImage src={product.photo} alt={product.name} className={s.image} />
 
-      <div className={s.info}>
-        <div className={s.wrap}>
-          <h2 className={s.title}>{product.name}</h2>
-          <p className={s.title}>৳{product.price}</p>
-        </div>
-        <p className={s.supplier}>{product.suppliers}</p>
-
-        <div className={s.wrapper}>
-          <div className={s.count}>
-            <svg className={s.icon} onClick={decrement}>
-              <use href={`${sprite}#icon-minus`} />
-            </svg>
-            <p className={s.number}>{count}</p>
-            <svg className={s.icon} onClick={increment}>
-              <use href={`${sprite}#icon-plus`} />
-            </svg>
+        <div className={s.info}>
+          <div className={s.wrap}>
+            <h2 className={s.title}>{product.name}</h2>
+            <p className={s.supplier}>{product.suppliers}</p>
+            <p className={s.title}>৳{product.price}</p>
           </div>
-          <button className={s.button} type="button">
-            Add to Cart
-          </button>
+
+          <p className={s.suppl}>{product.suppliers}</p>
+
+          <div className={s.wrapper}>
+            <div className={s.count}>
+              <svg className={s.icon} onClick={decrement}>
+                <use href={`${sprite}#icon-minus`} />
+              </svg>
+              <p className={s.number}>{count}</p>
+              <svg className={s.icon} onClick={increment}>
+                <use href={`${sprite}#icon-plus`} />
+              </svg>
+            </div>
+            <button className={s.button} type="button">
+              Add to Cart
+            </button>
+          </div>
         </div>
       </div>
+      <TabsContainer />
     </section>
   );
 };
