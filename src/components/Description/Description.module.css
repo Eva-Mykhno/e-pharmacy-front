@@ -1,0 +1,23 @@
+.descr {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+}
+
+.span {
+  color: var(--black);
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

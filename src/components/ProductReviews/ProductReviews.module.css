@@ -1,0 +1,102 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  max-width: 295px;
+  padding: 14px 28px;
+  border-radius: 20px;
+  border: 1px solid var(--border-banner);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.photo {
+  display: flex;
+  gap: 20px;
+}
+
+.image {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.date {
+  color: var(--main);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.rating {
+  display: flex;
+  gap: 6px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+}
+
+.number {
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+}
+
+@media screen and (min-width: 768px) {
+  .item {
+    width: 640px;
+    max-width: 640px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .item {
+    width: 720px;
+    max-width: 720px;
+  }
+}
