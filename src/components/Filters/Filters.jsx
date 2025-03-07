@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import { fetchProducts } from "../../redux/products/operations";
-import { setFilters, setProductsPerPage } from "../../redux/products/slice";
+import {
+  setCurrentPage,
+  setFilters,
+  setProductsPerPage,
+} from "../../redux/products/slice";
 import { selectFilters } from "../../redux/products/selectors";
 import s from "./Filters.module.css";
 
@@ -28,6 +32,7 @@ const Filters = () => {
 
   const handleSubmit = (values, actions) => {
     dispatch(setFilters(values));
+    dispatch(setCurrentPage(1));
 
     const width = window.innerWidth;
     let productsPerPage = 8;

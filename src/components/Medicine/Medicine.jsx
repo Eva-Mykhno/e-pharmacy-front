@@ -95,7 +95,7 @@ const Medicine = () => {
         </ul>
       )}
 
-      {products.length >= perPage && (
+      {products.length > 0 && products.length >= perPage && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
