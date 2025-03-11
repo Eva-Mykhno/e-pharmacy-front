@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { NavLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,21 +27,18 @@ const loginSchema = Yup.object().shape({
 const success = () => toast.success("Login successful!");
 const error = (message) => toast.error(message);
 
-const LoginPop = () => {
+const LoginPop = ({ onClose, setIsRegisterModalOpen }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/home");
+      onClose();
+      success();
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, onClose]);
 
-  const initialLoginValues = {
-    email: "",
-    password: "",
-  };
+  const initialLoginValues = { email: "", password: "" };
 
   const handleSubmit = async (values, actions) => {
     try {
@@ -50,7 +46,6 @@ const LoginPop = () => {
 
       if (login.fulfilled.match(result)) {
         actions.resetForm();
-        success();
       } else {
         actions.resetForm();
         error(result.payload?.message ?? "Wrong email or password! Try again!");
@@ -66,14 +61,13 @@ const LoginPop = () => {
   return (
     <div className={s.wrapper}>
       <Toaster position="top-center" reverseOrder={true} />
+      <h2 className={s.title}>Log in to your account</h2>
+      <p className={s.text}>Please login to your account before continuing.</p>
+
       <Formik
         validationSchema={loginSchema}
         initialValues={initialLoginValues}
         onSubmit={handleSubmit}>
-        <h2 className={s.title}>Log in to your account</h2>
-        <p className={s.text}>
-          Please login to your account before continuing.
-        </p>
         <Form className={s.form}>
           <div className={s.inputs}>
             <div className={s.wrap}>
@@ -103,9 +97,15 @@ const LoginPop = () => {
             <button type="submit" className={s.button}>
               Log In
             </button>
-            <NavLink to="/register" className={s.link}>
-              Don&rsquo;t have an account?
-            </NavLink>
+            <button
+              type="button"
+              className={s.link}
+              onClick={() => {
+                onClose();
+                setIsRegisterModalOpen(true);
+              }}>
+              Don’t have an account?
+            </button>
           </div>
         </Form>
       </Formik>

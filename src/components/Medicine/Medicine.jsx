@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   selectCurrentPage,
   selectFilters,
@@ -8,14 +9,17 @@ import {
   selectProducts,
   selectTotalPages,
 } from "../../redux/products/selectors";
-import Pagination from "../Pagination/Pagination";
-import { useEffect } from "react";
 import { setCurrentPage, setProductsPerPage } from "../../redux/products/slice";
 import { fetchProducts } from "../../redux/products/operations";
-import s from "./Medicine.module.css";
+import { selectUser } from "../../redux/auth/selectors";
+import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
 import LazyImage from "../LazyImage/LazyImage";
 import Filters from "../Filters/Filters";
+import Modal from "../Modal/Modal";
+import LoginPop from "../LoginPop/LoginPop";
+import RegisterPop from "../RegisterPop/RegisterPop";
+import s from "./Medicine.module.css";
 
 const Medicine = () => {
   const dispatch = useDispatch();
@@ -25,6 +29,10 @@ const Medicine = () => {
   const isLoading = useSelector(selectIsLoading);
   const perPage = useSelector(selectPerPage);
   const filters = useSelector(selectFilters);
+  const user = useSelector(selectUser);
+
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   useEffect(() => {
     const updateProductsPerPage = () => {
@@ -61,6 +69,14 @@ const Medicine = () => {
     }
   };
 
+  const handleAddToCart = () => {
+    if (!user) {
+      setIsLoginModalOpen(true);
+    } else {
+      console.log("Добавлено в корзину!");
+    }
+  };
+
   return (
     <div className={s.wrapper}>
       <h1 className={s.title}>Medicine</h1>
@@ -80,7 +96,9 @@ const Medicine = () => {
                 <div className={s.left}>
                   <p className={s.name}>{product.name}</p>
                   <p className={s.supplier}>{product.suppliers}</p>
-                  <button className={s.button}>Add to cart</button>
+                  <button className={s.button} onClick={handleAddToCart}>
+                    Add to cart
+                  </button>
                 </div>
 
                 <div className={s.right}>
@@ -102,6 +120,24 @@ const Medicine = () => {
           handlePageChange={handlePageChange}
         />
       )}
+
+      <Modal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}>
+        <LoginPop
+          onClose={() => setIsLoginModalOpen(false)}
+          setIsRegisterModalOpen={setIsRegisterModalOpen}
+        />
+      </Modal>
+
+      <Modal
+        isOpen={isRegisterModalOpen}
+        onClose={() => setIsRegisterModalOpen(false)}>
+        <RegisterPop
+          onClose={() => setIsRegisterModalOpen(false)}
+          setIsLoginModalOpen={setIsLoginModalOpen}
+        />
+      </Modal>
     </div>
   );
 };

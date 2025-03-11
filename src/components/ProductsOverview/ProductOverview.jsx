@@ -10,6 +10,10 @@ import Loader from "../Loader/Loader";
 import LazyImage from "../LazyImage/LazyImage";
 import s from "./ProductOverview.module.css";
 import TabsContainer from "../TabsContainer/TabsContainer";
+import { selectUser } from "../../redux/auth/selectors";
+import Modal from "../Modal/Modal";
+import LoginPop from "../LoginPop/LoginPop";
+import RegisterPop from "..//RegisterPop/RegisterPop";
 
 const sprite = "/sprite.svg";
 
@@ -18,8 +22,11 @@ const ProductOverview = () => {
   const dispatch = useDispatch();
   const product = useSelector(selectProductById);
   const isLoading = useSelector(selectIsLoading);
+  const user = useSelector(selectUser);
 
   const [count, setCount] = useState(1);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductById(id));
@@ -35,6 +42,12 @@ const ProductOverview = () => {
 
   const increment = () => {
     setCount(count + 1);
+  };
+
+  const handleClick = () => {
+    if (!user) {
+      setIsLoginModalOpen(true);
+    }
   };
 
   return (
@@ -61,13 +74,31 @@ const ProductOverview = () => {
                 <use href={`${sprite}#icon-plus`} />
               </svg>
             </div>
-            <button className={s.button} type="button">
+            <button className={s.button} type="button" onClick={handleClick}>
               Add to Cart
             </button>
           </div>
         </div>
       </section>
       <TabsContainer />
+
+      <Modal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}>
+        <LoginPop
+          onClose={() => setIsLoginModalOpen(false)}
+          setIsRegisterModalOpen={setIsRegisterModalOpen}
+        />
+      </Modal>
+
+      <Modal
+        isOpen={isRegisterModalOpen}
+        onClose={() => setIsRegisterModalOpen(false)}>
+        <RegisterPop
+          onClose={() => setIsRegisterModalOpen(false)}
+          setIsLoginModalOpen={setIsLoginModalOpen}
+        />
+      </Modal>
     </div>
   );
 };

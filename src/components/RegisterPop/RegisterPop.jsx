@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +35,7 @@ const registerSchema = Yup.object().shape({
 const success = () => toast.success("Registration successful!");
 const error = (message) => toast.error(message);
 
-const RegisterPop = () => {
+const RegisterPop = ({ onClose, setIsLoginModalOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -74,15 +74,14 @@ const RegisterPop = () => {
 
   return (
     <div className={s.wrapper}>
+      <h2 className={s.title}> Sign Up</h2>
+      <p className={s.text}>Before proceeding, please register on our site.</p>
       <Toaster position="top-center" reverseOrder={true} />
+
       <Formik
         validationSchema={registerSchema}
         initialValues={initialRegisterValues}
         onSubmit={handleSubmit}>
-        <h2 className={s.title}> Sign Up</h2>
-        <p className={s.text}>
-          Before proceeding, please register on our site.
-        </p>
         <Form className={s.form}>
           <div className={s.inputs}>
             <div className={s.wrap}>
@@ -94,7 +93,6 @@ const RegisterPop = () => {
               />
               <ErrorMessage name="name" component="span" className={s.error} />
             </div>
-
             <div className={s.wrap}>
               <Field
                 type="email"
@@ -104,7 +102,6 @@ const RegisterPop = () => {
               />
               <ErrorMessage name="email" component="span" className={s.error} />
             </div>
-
             <div className={s.wrap}>
               <Field
                 type="tel"
@@ -114,7 +111,6 @@ const RegisterPop = () => {
               />
               <ErrorMessage name="phone" component="span" className={s.error} />
             </div>
-
             <div className={s.wrap}>
               <Field
                 type="password"
@@ -133,9 +129,15 @@ const RegisterPop = () => {
             <button type="submit" className={s.button}>
               Register
             </button>
-            <NavLink to="/login" className={s.link}>
+            <button
+              type="button"
+              className={s.link}
+              onClick={() => {
+                onClose();
+                setIsLoginModalOpen(true);
+              }}>
               Already have an account?
-            </NavLink>
+            </button>
           </div>
         </Form>
       </Formik>

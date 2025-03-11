@@ -6,8 +6,8 @@ const sprite = "/sprite.svg";
 
 const getModalSize = () => {
   return window.innerWidth < 768
-    ? { width: "463px", padding: "40px" }
-    : { width: "343px", padding: "50px 70px" };
+    ? { width: "343px", padding: "40px 32px" }
+    : { width: "463px", padding: "50px 70px" };
 };
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -56,8 +56,7 @@ const Modal = ({ isOpen, onClose, children }) => {
       borderRadius: "20px",
       backgroundColor: "var(--white)",
       width: modalSize.width,
-      minHeight: modalSize.height,
-      height: "100%",
+      padding: modalSize.padding,
       zIndex: 105,
     },
     overlay: {

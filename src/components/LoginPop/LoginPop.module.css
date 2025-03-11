@@ -15,6 +15,7 @@
 
 .text {
   margin-bottom: 25px;
+  max-width: 260px;
   text-align: center;
   color: var(--text);
   font-size: 14px;
