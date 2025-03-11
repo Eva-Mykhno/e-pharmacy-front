@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  width: 210px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.desktop {
+  display: none;
+}
+
+.nav {
+  padding-top: 280px;
+}
+
+@media screen and (min-width: 768px) {
+  .buttons {
+    width: 334px;
+    padding-bottom: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: flex;
+  }
+}

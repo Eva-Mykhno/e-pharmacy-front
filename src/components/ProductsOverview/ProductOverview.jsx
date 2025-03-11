@@ -38,8 +38,8 @@ const ProductOverview = () => {
   };
 
   return (
-    <section className={s.section}>
-      <div className={s.block}>
+    <div className={s.section}>
+      <section className={s.block}>
         <LazyImage src={product.photo} alt={product.name} className={s.image} />
 
         <div className={s.info}>
@@ -66,9 +66,9 @@ const ProductOverview = () => {
             </button>
           </div>
         </div>
-      </div>
+      </section>
       <TabsContainer />
-    </section>
+    </div>
   );
 };
 

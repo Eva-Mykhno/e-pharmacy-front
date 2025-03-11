@@ -24,6 +24,7 @@
   --border-link: rgba(241, 241, 241, 0.5);
   --border-product: rgba(89, 177, 122, 0.6);
   --text: #6a6a6f;
+  --overlay: rgba(29, 30, 33, 0.45);
 }
 
 html {

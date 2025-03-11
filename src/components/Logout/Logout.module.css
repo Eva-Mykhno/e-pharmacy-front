@@ -1,0 +1,14 @@
+.button {
+  padding: 13px 32px;
+  border-radius: 60px;
+  border: 1px solid var(--border-link);
+  background-color: transparent;
+  color: var(--border-banner);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.button.desktop {
+  border: 1px solid var(--border-product);
+  color: var(--green);
+}

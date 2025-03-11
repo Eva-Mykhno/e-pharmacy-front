@@ -1,5 +1,7 @@
+import s from "./Cart.module.css";
+
 const Cart = () => {
-  return <div>Cart</div>;
+  return <section className={s.section}>cart</section>;
 };
 
 export default Cart;

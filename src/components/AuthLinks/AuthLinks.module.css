@@ -1,0 +1,44 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.register {
+  padding: 13px 32px;
+  border-radius: 60px;
+  border: 1px solid var(--border-link);
+  color: var(--border-banner);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.login {
+  color: var(--border-banner);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-underline-position: from-font;
+  text-underline-offset: 2px;
+}
+
+.register.desktop {
+  color: var(--green);
+  border: 1px solid var(--border-product);
+}
+
+.login.desktop {
+  color: var(--green);
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    flex-direction: row;
+  }
+
+  .register {
+    padding: 16px 32px;
+  }
+}

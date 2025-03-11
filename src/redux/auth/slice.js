@@ -1,87 +1,3 @@
-// import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-// import { fetchUser, login, logout, refresh, register } from "./operations";
-
-// const initialState = {
-//   user: null,
-//   token: null,
-//   isLoading: true,
-//   isLoggedIn: false,
-//   isRefreshing: false,
-//   error: null,
-// };
-
-// const authSlice = createSlice({
-//   name: "auth",
-//   initialState,
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(register.fulfilled, (state, action) => {
-//         state.user = action.payload.user;
-//         state.token = action.payload.token;
-//         state.isLoggedIn = true;
-//         state.isLoading = false;
-//       })
-//       .addCase(login.fulfilled, (state, action) => {
-//         state.user = action.payload.user;
-//         state.token = action.payload.token;
-//         state.isLoggedIn = true;
-//         state.isLoading = false;
-//       })
-//       .addCase(fetchUser.fulfilled, (state, action) => {
-//         state.user = action.payload;
-//         state.isLoggedIn = true;
-//         state.isLoading = false;
-//       })
-//       .addCase(logout.fulfilled, (state) => {
-//         state.user = {
-//           name: null,
-//           email: null,
-//         };
-//         state.isLoggedIn = false;
-//         state.token = null;
-//         state.isLoading = false;
-//       })
-//       .addCase(refresh.fulfilled, (state, action) => {
-//         state.user = action.payload.user;
-//         state.token = action.payload.token;
-//         state.isLoggedIn = true;
-//         state.isLoading = false;
-//         state.isRefreshing = false;
-//       })
-//       .addMatcher(
-//         isAnyOf(
-//           register.pending,
-//           login.pending,
-//           fetchUser.pending,
-//           logout.pending,
-//           refresh.pending
-//         ),
-//         (state) => {
-//           state.isLoading = true;
-//           state.isRefreshing = true;
-//           state.error = null;
-//         }
-//       )
-//       .addMatcher(
-//         isAnyOf(
-//           register.rejected,
-//           login.rejected,
-//           fetchUser.rejected,
-//           logout.rejected,
-//           refresh.rejected
-//         ),
-//         (state, action) => {
-//           state.isLoading = false;
-//           state.isLoggedIn = false;
-//           state.isRefreshing = false;
-//           state.error = action.payload;
-//         }
-//       );
-//   },
-// });
-
-// export const authReducer = authSlice.reducer;
-
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchUser, login, logout, refresh, register } from "./operations";
 
@@ -118,10 +34,12 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
-        state.user = action.payload.user ?? null;
-        state.isLoggedIn = Boolean(action.payload.user);
+        state.user = action.payload.user;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
         state.isLoading = false;
       })
+
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
         state.accessToken = null;
@@ -131,10 +49,11 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(refresh.fulfilled, (state, action) => {
-        state.user = action.payload.user ?? state.user;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+        state.user = action.payload.user;
         state.isRefreshing = false;
+        state.isLoggedIn = true;
       })
       .addCase(refresh.pending, (state) => {
         state.isRefreshing = true;
@@ -143,6 +62,10 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isRefreshing = false;
         state.error = action.payload;
+        state.accessToken = null;
+        state.refreshToken = null;
+        state.isLoggedIn = false;
+        state.user = null;
       })
       .addMatcher(
         isAnyOf(

@@ -2,6 +2,8 @@ import { lazy, Suspense } from "react";
 import Loader from "../Loader/Loader";
 import { Routes, Route } from "react-router-dom";
 // import PrivateRoute from "../../routes/PrivateRoute.jsx";
+// import { useDispatch } from "react-redux";
+// import { fetchUser } from "../../redux/auth/operations.js";
 
 const RegisterPage = lazy(() =>
   import("../../pages/RegisterPage/RegisterPage")
@@ -16,8 +18,15 @@ const MedicinePage = lazy(() =>
   import("../../pages/MedicinePage/MedicinePage")
 );
 const ProductPage = lazy(() => import("../../pages/ProductPage/ProductPage"));
+// const CartPage = lazy(() => import("../../pages/CartPage/CartPage.jsx"));
 
 const App = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchUser());
+  // }, [dispatch]);
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
@@ -28,6 +37,14 @@ const App = () => {
           <Route path="/medicine-store" element={<MedicineStorePage />} />
           <Route path="/medicine" element={<MedicinePage />} />
           <Route path="/products/:id" element={<ProductPage />} />
+          {/* <Route
+            path="/cart"
+            element={
+              <PrivateRoute>
+                <CartPage />
+              </PrivateRoute>
+            }
+          /> */}
         </Route>
       </Routes>
     </Suspense>

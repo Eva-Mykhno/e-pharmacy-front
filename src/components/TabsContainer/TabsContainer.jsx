@@ -8,7 +8,7 @@ const TabsContainer = () => {
   const [activeTab, setActiveTab] = useState("description");
 
   return (
-    <div className={s.wrapper}>
+    <section className={s.wrapper}>
       <div className={s.buttons}>
         <button
           className={clsx(s.button, {
@@ -27,7 +27,7 @@ const TabsContainer = () => {
       </div>
 
       {activeTab === "description" ? <Description /> : <ProductReviews />}
-    </div>
+    </section>
   );
 };
 
