@@ -1,0 +1,16 @@
+.button {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  z-index: 106;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--black);
+}
