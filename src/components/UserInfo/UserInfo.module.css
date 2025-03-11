@@ -1,10 +1,57 @@
 .wrapper {
+  display: flex;
+  align-content: center;
+  gap: 8px;
+}
+
+.wrapper.home {
+  display: none;
+}
+
+.back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  border: 1px solid var(--border-banner);
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
 }
 
 .cart {
+  width: 16px;
+  height: 16px;
+  fill: transparent;
+  stroke: var(--green);
 }
 
 .letter {
-  color: var(--black);
-  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--light-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    gap: 10px;
+  }
+
+  .back {
+    width: 44px;
+    height: 44px;
+  }
+
+  .letter {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
 }

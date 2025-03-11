@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
 import s from "./UserInfo.module.css";
 import {
   selectAccessToken,
@@ -7,6 +8,7 @@ import {
 } from "../../redux/auth/selectors";
 import { useEffect } from "react";
 import { fetchUser } from "../../redux/auth/operations";
+import { useLocation } from "react-router-dom";
 
 const sprite = "/sprite.svg";
 
@@ -16,8 +18,10 @@ const UserInfo = () => {
   const accessToken = useSelector(selectAccessToken);
   const user = useSelector(selectUser);
 
+  const location = useLocation();
+  const isHome = location.pathname === "/home";
+
   useEffect(() => {
-    console.log("useEffect triggered:", { accessToken, user });
     if (accessToken && !user) {
       dispatch(fetchUser());
     }
@@ -30,10 +34,12 @@ const UserInfo = () => {
   const firstLetter = name.charAt(0).toUpperCase();
 
   return (
-    <div className={s.wrapper}>
-      <svg className={s.cart}>
-        <use href={`${sprite}#icon-cart`} />
-      </svg>
+    <div className={clsx(s.wrapper, { [s.home]: isHome })}>
+      <div className={s.back}>
+        <svg className={s.cart}>
+          <use href={`${sprite}#icon-cart`} />
+        </svg>
+      </div>
 
       <p className={s.letter}>{firstLetter}</p>
     </div>

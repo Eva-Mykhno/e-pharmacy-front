@@ -1,5 +1,5 @@
 .wrapper {
-  padding-top: 64px;
+  padding-top: 40px;
 }
 
 .title {
@@ -110,7 +110,7 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    padding-top: 80px;
+    padding-top: 56px;
   }
 
   .list {
@@ -147,7 +147,7 @@
 
 @media screen and (min-width: 1440px) {
   .wrapper {
-    padding-top: 100px;
+    padding-top: 76px;
   }
 
   .list {

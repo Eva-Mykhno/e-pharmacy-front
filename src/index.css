@@ -37,7 +37,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--dark);
 }
 
 h1,
@@ -72,6 +71,12 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .container {

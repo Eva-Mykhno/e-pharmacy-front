@@ -2,7 +2,7 @@
   margin-left: calc(-1 * (100vw - 100%) / 2);
   position: relative;
   width: 100vw;
-  height: 812px;
+  height: 740px;
   background-color: var(--green);
 }
 
@@ -76,7 +76,7 @@
 
 @media screen and (min-width: 768px) {
   .hero {
-    height: 1024px;
+    height: 928px;
   }
 
   .hero::before {
@@ -106,7 +106,7 @@
 
 @media screen and (min-width: 1440px) {
   .hero {
-    height: 800px;
+    height: 704px;
   }
   .hero::before {
     max-width: 1440px;

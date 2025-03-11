@@ -8,21 +8,21 @@ import Logout from "../Logout/Logout";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  selectIsLoading,
   selectIsLoggedIn,
   selectIsRefreshing,
 } from "../../redux/auth/selectors";
 import UserInfo from "../UserInfo/UserInfo";
-import Loader from "../Loader/Loader";
+import { useLocation } from "react-router-dom";
 
 const sprite = "/sprite.svg";
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoading = useSelector(selectIsLoading);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const location = useLocation();
+  const isHome = location.pathname === "/home";
 
   if (isRefreshing) {
     return null;
@@ -37,13 +37,12 @@ const Header = () => {
   };
 
   return (
-    <header className={clsx(s.header, "container")}>
-      <Logo />
+    <header className={clsx(s.header, { [s.home]: isHome }, "container")}>
+      <Logo color={isHome ? "white" : "green"} />
       <div className={s.mobile}>
-        {isLoading && <Loader />}
         {isLoggedIn && <UserInfo />}
         <button onClick={() => openModal()} type="button" className={s.button}>
-          <svg className={s.menu}>
+          <svg className={clsx(s.menu, { [s.home]: isHome })}>
             <use href={`${sprite}#icon-menu`} />
           </svg>
         </button>
@@ -65,7 +64,7 @@ const Header = () => {
       <div className={s.desktop}>
         <NavLinks variant="header" />
         {isLoggedIn ? (
-          <div>
+          <div className={s.info}>
             <UserInfo />
             <Logout />
           </div>

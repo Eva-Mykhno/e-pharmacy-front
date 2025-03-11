@@ -1,7 +1,16 @@
 .header {
+  height: 82px;
+  width: 100%;
+  max-width: 375px;
+  padding-top: 20px;
+  padding-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header.home {
+  background-color: var(--green);
 }
 
 .buttons {
@@ -14,6 +23,29 @@
   padding-bottom: 40px;
 }
 
+.button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.menu {
+  width: 32px;
+  height: 26px;
+  fill: transparent;
+  stroke: var(--green);
+}
+
+.mobile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu.home {
+  stroke: var(--white);
+}
+
 .desktop {
   display: none;
 }
@@ -23,6 +55,16 @@
 }
 
 @media screen and (min-width: 768px) {
+  .header {
+    max-width: 768px;
+    padding-top: 28px;
+    height: 96px;
+  }
+
+  .mobile {
+    gap: 16px;
+  }
+
   .buttons {
     width: 334px;
     padding-bottom: 64px;
@@ -30,11 +72,25 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .header {
+    max-width: 1440px;
+    padding-left: 128px;
+    padding-right: 128px;
+  }
+
   .mobile {
     display: none;
   }
 
   .desktop {
+    width: 756px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .info {
+    display: flex;
+    gap: 12px;
   }
 }
