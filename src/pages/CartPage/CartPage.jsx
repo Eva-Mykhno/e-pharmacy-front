@@ -4,7 +4,7 @@ import Cart from "../../components/Cart/Cart";
 // import { useDispatch } from "react-redux";
 // import { fetchUser } from "../../redux/auth/operations";
 // import { useEffect } from "react";
-// import CartForm from "../../components/CartForm/CartForm";
+import CartForm from "../../components/CartForm/CartForm";
 
 const CartPage = () => {
   // const dispatch = useDispatch();
@@ -15,7 +15,8 @@ const CartPage = () => {
 
   return (
     <main className={clsx(s.page, "container")}>
-      {/* <CartForm /> */}
+      <h2 className={s.title}>Cart</h2>
+      <CartForm />
       <Cart />
     </main>
   );

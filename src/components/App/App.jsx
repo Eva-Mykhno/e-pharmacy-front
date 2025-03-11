@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import Loader from "../Loader/Loader";
 import { Routes, Route } from "react-router-dom";
-// import PrivateRoute from "../../routes/PrivateRoute.jsx";
+import PrivateRoute from "../../routes/PrivateRoute.jsx";
 
 const RegisterPage = lazy(() =>
   import("../../pages/RegisterPage/RegisterPage")
@@ -16,7 +16,7 @@ const MedicinePage = lazy(() =>
   import("../../pages/MedicinePage/MedicinePage")
 );
 const ProductPage = lazy(() => import("../../pages/ProductPage/ProductPage"));
-// const CartPage = lazy(() => import("../../pages/CartPage/CartPage.jsx"));
+const CartPage = lazy(() => import("../../pages/CartPage/CartPage.jsx"));
 
 const App = () => {
   return (
@@ -29,14 +29,14 @@ const App = () => {
           <Route path="/medicine-store" element={<MedicineStorePage />} />
           <Route path="/medicine" element={<MedicinePage />} />
           <Route path="/products/:id" element={<ProductPage />} />
-          {/* <Route
+          <Route
             path="/cart"
             element={
               <PrivateRoute>
                 <CartPage />
               </PrivateRoute>
             }
-          /> */}
+          />
         </Route>
       </Routes>
     </Suspense>

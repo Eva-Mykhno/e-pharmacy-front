@@ -15,6 +15,7 @@ import { nearestsReducer } from "./nearest/slice";
 import { reviewsReducer } from "./reviews/slice";
 import { pharmaciesReducer } from "./pharmacies/slice";
 import { productsReducer } from "./products/slice";
+import { cartReducer } from "./carts/slice";
 
 const persistConfig = {
   key: "auth",
@@ -30,6 +31,7 @@ export const store = configureStore({
     reviews: reviewsReducer,
     pharmacies: pharmaciesReducer,
     products: productsReducer,
+    carts: cartReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
