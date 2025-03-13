@@ -12,7 +12,7 @@ import {
   selectIsRefreshing,
 } from "../../redux/auth/selectors";
 import UserInfo from "../UserInfo/UserInfo";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const sprite = "/sprite.svg";
 
@@ -38,7 +38,10 @@ const Header = () => {
 
   return (
     <header className={clsx(s.header, { [s.home]: isHome }, "container")}>
-      <Logo color={isHome ? "white" : "green"} />
+      <NavLink to="/home">
+        <Logo color={isHome ? "white" : "green"} />
+      </NavLink>
+
       <div className={s.mobile}>
         {isLoggedIn && <UserInfo />}
         <button onClick={() => openModal()} type="button" className={s.button}>

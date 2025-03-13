@@ -1,6 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import toast, { Toaster } from "react-hot-toast";
 import s from "./CartForm.module.css";
+import { useDispatch } from "react-redux";
+import { checkoutCart } from "../../redux/carts/operations";
 
 const cartSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,7 +26,12 @@ const cartSchema = Yup.object().shape({
   payment: Yup.string().required("Payment is required"),
 });
 
+const success = () => toast.success("The order is successful!");
+const error = (message) => toast.error(message);
+
 const CartForm = () => {
+  const dispatch = useDispatch();
+
   const initialCartValues = {
     name: "",
     email: "",
@@ -32,7 +40,28 @@ const CartForm = () => {
     payment: "Cash On Delivery",
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (values, actions) => {
+    try {
+      await dispatch(
+        checkoutCart({
+          shippingInfo: {
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            address: values.address,
+          },
+          paymentMethod: values.payment,
+        })
+      );
+      success();
+    } catch (err) {
+      error(
+        err.response?.data?.message || "Something went wrong... Try again!"
+      );
+    } finally {
+      actions.resetForm();
+    }
+  };
 
   return (
     <section className={s.cart}>
@@ -41,18 +70,19 @@ const CartForm = () => {
         Enter your delivery address where you get the product. You can also send
         any other location where you send the products.
       </p>
+      <Toaster position="top-center" reverseOrder={true} />
       <Formik validationSchema={cartSchema} initialValues={initialCartValues}>
         <Form className={s.form}>
           <div className={s.inputs}>
             <div className={s.wrap}>
-              <label className={s.label}>
+              <label>
+                <p className={s.label}>Name</p>
                 <Field
                   type="text"
                   name="name"
                   placeholder="Enter text"
                   className={s.input}
                 />
-                Name
                 <ErrorMessage
                   name="name"
                   component="span"
@@ -62,14 +92,14 @@ const CartForm = () => {
             </div>
 
             <div className={s.wrap}>
-              <label className={s.label}>
+              <label>
+                <p className={s.label}>Email</p>
                 <Field
                   type="email"
                   name="email"
                   placeholder="Enter text"
                   className={s.input}
                 />
-                Email
                 <ErrorMessage
                   name="email"
                   component="span"
@@ -79,14 +109,14 @@ const CartForm = () => {
             </div>
 
             <div className={s.wrap}>
-              <label className={s.label}>
+              <label>
+                <p className={s.label}>Phone</p>
                 <Field
                   type="tel"
                   name="phone"
                   placeholder="Enter text"
                   className={s.input}
                 />
-                Phone
                 <ErrorMessage
                   name="phone"
                   component="span"
@@ -96,14 +126,14 @@ const CartForm = () => {
             </div>
 
             <div className={s.wrap}>
-              <label className={s.label}>
+              <label>
+                <p className={s.label}>Address</p>
                 <Field
                   type="text"
                   name="address"
                   placeholder="Enter text"
                   className={s.input}
                 />
-                Address
                 <ErrorMessage
                   name="address"
                   component="span"
@@ -117,24 +147,26 @@ const CartForm = () => {
           <p className={s.text}>
             You can pay us in a multiple way in our payment gateway system.
           </p>
-          <label className={s.label}>
-            <Field
-              type="radio"
-              name="payment"
-              value="Cash On Delivery"
-              className={s.radio}
-            />
-            Cash On Delivery
-          </label>
-          <label className={s.label}>
-            <Field
-              type="radio"
-              name="payment"
-              value="Bank"
-              className={s.radio}
-            />
-            Bank
-          </label>
+          <div className={s.payment}>
+            <label className={s.paymentLabel}>
+              <Field
+                type="radio"
+                name="payment"
+                value="Cash On Delivery"
+                className={s.radio}
+              />
+              <p className={s.paymentText}>Cash On Delivery</p>
+            </label>
+            <label className={s.paymentLabel}>
+              <Field
+                type="radio"
+                name="payment"
+                value="Bank"
+                className={s.radio}
+              />
+              <p className={s.paymentText}>Bank</p>
+            </label>
+          </div>
 
           <h2 className={s.title}>Order details </h2>
           <p className={s.text}>

@@ -1,0 +1,33 @@
+.page {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.text {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.back {
+  padding: 14px 32px;
+  border-radius: 60px;
+  background-color: var(--green);
+  transition: all 0.3s ease;
+}
+
+.back:hover,
+.back:focus {
+  background-color: var(--dark-green);
+}
+
+.backText {
+  color: var(--white);
+  font-weight: 600;
+}

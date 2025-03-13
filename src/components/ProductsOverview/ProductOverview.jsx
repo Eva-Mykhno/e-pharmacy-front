@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import { fetchProductById } from "../../redux/products/operations";
+import { updateCart } from "../../redux/carts/operations";
 import {
   selectProductById,
   selectIsLoading,
@@ -13,9 +15,12 @@ import TabsContainer from "../TabsContainer/TabsContainer";
 import { selectUser } from "../../redux/auth/selectors";
 import Modal from "../Modal/Modal";
 import LoginPop from "../LoginPop/LoginPop";
-import RegisterPop from "..//RegisterPop/RegisterPop";
+import RegisterPop from "../RegisterPop/RegisterPop";
 
 const sprite = "/sprite.svg";
+
+const success = () => toast.success("Product added to cart!");
+const error = (message) => toast.error(message);
 
 const ProductOverview = () => {
   const { id } = useParams();
@@ -44,14 +49,22 @@ const ProductOverview = () => {
     setCount(count + 1);
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!user) {
       setIsLoginModalOpen(true);
+      return;
+    }
+    try {
+      dispatch(updateCart({ productId: product._id, quantity: count }));
+      success();
+    } catch {
+      error();
     }
   };
 
   return (
     <div className={s.section}>
+      <Toaster position="top-center" reverseOrder={true} />
       <section className={s.block}>
         <LazyImage src={product.photo} alt={product.name} className={s.image} />
 

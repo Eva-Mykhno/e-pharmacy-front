@@ -26,3 +26,257 @@
   padding-top: 40px;
   padding-bottom: 20px;
 }
+
+.inputs {
+  margin-bottom: 78px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputs:after {
+  content: "";
+  position: absolute;
+  top: 340px;
+  left: 0;
+  width: 100%;
+  max-width: 295px;
+  height: 1px;
+  background-color: var(--border-input);
+}
+
+.label {
+  padding-left: 18px;
+  padding-bottom: 8px;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.28;
+}
+
+.wrap {
+  position: relative;
+}
+
+.input {
+  width: 240px;
+  padding: 13px 18px;
+  outline: none;
+  border-radius: 60px;
+  border: 1px solid var(--border-input);
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.input::placeholder {
+  color: var(--placeholder);
+}
+
+.input:focus,
+.input:hover {
+  border: 1px solid var(--green);
+}
+
+.error {
+  position: absolute;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 500;
+  top: 102%;
+  left: 10%;
+  transform: translateX(-10%);
+  z-index: 2;
+}
+
+.payment {
+  margin-top: 21px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.paymentLabel {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-input);
+  background-color: var(--white);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--white);
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.radio:checked {
+  border-color: var(--green);
+}
+
+.radio:checked::before {
+  background-color: var(--green);
+}
+
+.radio:hover {
+  border-color: var(--green);
+}
+
+.radio:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+.paymentText {
+  color: var(--black);
+  opacity: 0.6;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  transition: all 0.3s ease;
+}
+
+.radio:checked + .paymentText {
+  opacity: 1;
+}
+
+.payment::after {
+  content: "";
+  position: absolute;
+  top: 86px;
+  left: 0;
+  width: 100%;
+  max-width: 295px;
+  height: 1px;
+  background-color: var(--border-input);
+}
+
+.total {
+  margin: 20px 0;
+  max-width: 295px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--total);
+}
+
+.sum {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.button {
+  outline: none;
+  border: none;
+  padding: 13px 32px;
+  border-radius: 60px;
+  background-color: var(--green);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  transition: all 0.3s ease;
+}
+
+.button:focus,
+.button:hover {
+  background-color: var(--dark-green);
+}
+
+@media screen and (min-width: 375px) {
+  .input {
+    width: 295px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cart {
+    width: 704px;
+    max-width: 704px;
+    padding: 40px 78px;
+  }
+
+  .title {
+    margin-bottom: 14px;
+    font-size: 20px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .form {
+    padding-bottom: 0;
+  }
+
+  .inputs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 14px;
+    row-gap: 20px;
+  }
+
+  .inputs:after {
+    width: 548px;
+    max-width: 548px;
+    top: 200px;
+  }
+
+  .input {
+    width: 260px;
+  }
+
+  .payment::after {
+    width: 548px;
+    max-width: 548px;
+  }
+
+  .total {
+    width: 548px;
+    max-width: 548px;
+    padding: 20px;
+  }
+
+  .sum {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cart {
+    width: 628px;
+    max-width: 628px;
+    padding: 40px;
+  }
+}

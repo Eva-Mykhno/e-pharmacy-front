@@ -22,7 +22,7 @@ const cartSlice = createSlice({
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.products = action.payload;
+        state.products = action.payload || [];
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.status = "failed";
@@ -30,8 +30,23 @@ const cartSlice = createSlice({
       })
       .addCase(updateCart.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.products = action.payload.products;
+        state.products = action.payload;
       })
+      // .addCase(updateCart.fulfilled, (state, action) => {
+      //   state.status = "succeeded";
+
+      //   action.payload.forEach((updatedProduct) => {
+      //     const existingProduct = state.products.find(
+      //       (item) => item.product._id === updatedProduct.product._id
+      //     );
+      //     if (existingProduct) {
+      //       existingProduct.quantity = updatedProduct.quantity;
+      //     } else {
+      //       state.products.push(updatedProduct);
+      //     }
+      //   });
+      // })
+
       .addCase(updateCart.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;

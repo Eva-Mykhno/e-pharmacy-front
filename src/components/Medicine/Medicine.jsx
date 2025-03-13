@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import {
   selectCurrentPage,
   selectFilters,
@@ -20,6 +21,10 @@ import Modal from "../Modal/Modal";
 import LoginPop from "../LoginPop/LoginPop";
 import RegisterPop from "../RegisterPop/RegisterPop";
 import s from "./Medicine.module.css";
+import { updateCart } from "../../redux/carts/operations";
+
+const success = () => toast.success("Product added to cart!");
+const error = (message) => toast.error(message);
 
 const Medicine = () => {
   const dispatch = useDispatch();
@@ -69,16 +74,23 @@ const Medicine = () => {
     }
   };
 
-  const handleAddToCart = () => {
+  const handleClick = async (product) => {
     if (!user) {
       setIsLoginModalOpen(true);
-    } else {
-      console.log("Добавлено в корзину!");
+      return;
+    }
+
+    try {
+      await dispatch(updateCart({ productId: product._id, quantity: 1 }));
+      success();
+    } catch {
+      error();
     }
   };
 
   return (
     <div className={s.wrapper}>
+      <Toaster position="top-center" reverseOrder={true} />
       <h1 className={s.title}>Medicine</h1>
       <Filters />
       {isLoading && <Loader />}
@@ -96,7 +108,9 @@ const Medicine = () => {
                 <div className={s.left}>
                   <p className={s.name}>{product.name}</p>
                   <p className={s.supplier}>{product.suppliers}</p>
-                  <button className={s.button} onClick={handleAddToCart}>
+                  <button
+                    className={s.button}
+                    onClick={() => handleClick(product)}>
                     Add to cart
                   </button>
                 </div>

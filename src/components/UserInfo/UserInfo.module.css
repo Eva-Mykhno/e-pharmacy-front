@@ -9,6 +9,7 @@
 }
 
 .back {
+  position: relative;
   width: 40px;
   height: 40px;
   display: flex;
@@ -24,6 +25,21 @@
   height: 16px;
   fill: transparent;
   stroke: var(--green);
+}
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  width: 16px;
+  height: 16px;
+  padding: 2px 4px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: var(--light-green);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .letter {

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import Loader from "../Loader/Loader";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import PrivateRoute from "../../routes/PrivateRoute.jsx";
 
 const RegisterPage = lazy(() =>
@@ -17,6 +17,9 @@ const MedicinePage = lazy(() =>
 );
 const ProductPage = lazy(() => import("../../pages/ProductPage/ProductPage"));
 const CartPage = lazy(() => import("../../pages/CartPage/CartPage.jsx"));
+const NotFoundPage = lazy(() =>
+  import("../../pages/NotFoundPage/NotFoundPage.jsx")
+);
 
 const App = () => {
   return (
@@ -25,6 +28,7 @@ const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/medicine-store" element={<MedicineStorePage />} />
           <Route path="/medicine" element={<MedicinePage />} />
@@ -37,6 +41,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Suspense>
