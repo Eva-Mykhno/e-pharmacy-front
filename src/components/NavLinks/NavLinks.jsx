@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import clsx from "clsx";
 import s from "./NavLinks.module.css";
 
-const NavLinks = ({ variant }) => {
+const NavLinks = ({ variant, onClose }) => {
   const location = useLocation();
 
   return (
@@ -18,6 +18,7 @@ const NavLinks = ({ variant }) => {
           return (
             <li key={to}>
               <NavLink
+                onClick={onClose}
                 to={to}
                 className={clsx(s.item, s[variant], { [s.active]: isActive })}>
                 {label}

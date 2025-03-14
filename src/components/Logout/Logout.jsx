@@ -4,7 +4,7 @@ import { logout } from "../../redux/auth/operations";
 import s from "./Logout.module.css";
 import clsx from "clsx";
 
-const Logout = ({ isModal = false }) => {
+const Logout = ({ isModal = false, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,6 +13,7 @@ const Logout = ({ isModal = false }) => {
   const handleClick = async () => {
     await dispatch(logout());
     navigate("/home");
+    if (onClose) onClose();
   };
 
   return (

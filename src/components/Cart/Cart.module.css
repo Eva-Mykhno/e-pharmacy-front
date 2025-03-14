@@ -133,4 +133,68 @@
 }
 
 @media screen and (min-width: 768px) {
+  .item {
+    width: 704px;
+    height: 133px;
+    gap: 20px;
+  }
+
+  .item:not(:last-child)::after {
+    width: 704px;
+    max-width: 704px;
+  }
+
+  .image {
+    width: 122px;
+    height: 133px;
+  }
+
+  .fullInfo {
+    width: 562px;
+  }
+
+  .info {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .wrapper {
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quantity {
+    width: 108px;
+    height: 44px;
+    padding: 12px 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .list {
+    max-height: 884px;
+    padding-top: 40px;
+    overflow-y: auto;
+  }
+
+  .item {
+    width: 460px;
+  }
+
+  .item:not(:last-child)::after {
+    width: 460px;
+  }
 }

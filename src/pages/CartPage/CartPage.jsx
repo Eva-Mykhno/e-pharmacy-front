@@ -7,8 +7,10 @@ const CartPage = () => {
   return (
     <main className={clsx(s.page, "container")}>
       <h2 className={s.title}>Cart</h2>
-      <CartForm />
-      <Cart />
+      <div className={s.wrap}>
+        <CartForm />
+        <Cart />
+      </div>
     </main>
   );
 };

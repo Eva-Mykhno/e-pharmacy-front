@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import clsx from "clsx";
 import s from "./AuthLinks.module.css";
 
-const AuthLinks = ({ isModal = false }) => {
+const AuthLinks = ({ isModal = false, onClose }) => {
   const location = useLocation();
   const isHomeOrModal = location.pathname === "/home" || isModal;
 
@@ -11,6 +11,7 @@ const AuthLinks = ({ isModal = false }) => {
       <li>
         <NavLink
           to="/register"
+          onClick={onClose}
           className={clsx(s.register, { [s.desktop]: !isHomeOrModal })}>
           Register
         </NavLink>
@@ -19,6 +20,7 @@ const AuthLinks = ({ isModal = false }) => {
       <li>
         <NavLink
           to="/login"
+          onClick={onClose}
           className={clsx(s.login, { [s.desktop]: !isHomeOrModal })}>
           Login
         </NavLink>

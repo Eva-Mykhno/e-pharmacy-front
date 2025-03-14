@@ -53,12 +53,12 @@ const Header = () => {
         <ModalNav isOpen={isModalOpen} onClose={closeModal}>
           <div className={s.buttons}>
             <div className={s.nav}>
-              <NavLinks variant="header" />
+              <NavLinks variant="header" onClose={closeModal} />
             </div>
             {isLoggedIn ? (
-              <Logout isModal={true} />
+              <Logout isModal={true} onClose={closeModal} />
             ) : (
-              <AuthLinks isModal={true} />
+              <AuthLinks isModal={true} onClose={closeModal} />
             )}
           </div>
         </ModalNav>

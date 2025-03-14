@@ -1,0 +1,46 @@
+.page {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  color: var(--black);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.14;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    padding-top: 56px;
+    padding-bottom: 120px;
+    gap: 32px;
+  }
+
+  .wrap {
+    gap: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .page {
+    padding-top: 76px;
+    padding-left: 128px;
+    padding-right: 128px;
+    gap: 40px;
+  }
+
+  .wrap {
+    flex-direction: row;
+    gap: 96px;
+  }
+}
