@@ -7,7 +7,6 @@ export const fetchProducts = createAsyncThunk(
   async ({ page, perPage }, thunkAPI) => {
     try {
       const filters = selectFilters(thunkAPI.getState());
-      console.log("Фильтры при запросе:", filters);
       const { data } = await api.get("/products", {
         params: { page, perPage, ...filters },
       });
