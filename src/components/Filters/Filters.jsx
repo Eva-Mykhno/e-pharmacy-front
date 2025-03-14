@@ -49,10 +49,7 @@ const Filters = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValuesFilters}
-      onSubmit={handleSubmit}
-      enableReinitialize>
+    <Formik initialValues={initialValuesFilters} onSubmit={handleSubmit}>
       {({ values, handleChange }) => (
         <Form className={s.form}>
           <label className={s.label}>
