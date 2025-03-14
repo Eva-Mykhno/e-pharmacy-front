@@ -3,8 +3,8 @@ import { fetchCart, updateCart, checkoutCart } from "./operations";
 
 const initialState = {
   products: [],
-  status: "idle",
   error: null,
+  isLoading: false,
 };
 
 const cartSlice = createSlice({
@@ -18,45 +18,25 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCart.pending, (state) => {
-        state.status = "loading";
+        state.isLoading = true;
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.isLoading = false;
         state.products = action.payload || [];
       })
       .addCase(fetchCart.rejected, (state, action) => {
-        state.status = "failed";
         state.error = action.payload;
       })
       .addCase(updateCart.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.products = action.payload;
       })
-      // .addCase(updateCart.fulfilled, (state, action) => {
-      //   state.status = "succeeded";
-
-      //   action.payload.forEach((updatedProduct) => {
-      //     const existingProduct = state.products.find(
-      //       (item) => item.product._id === updatedProduct.product._id
-      //     );
-      //     if (existingProduct) {
-      //       existingProduct.quantity = updatedProduct.quantity;
-      //     } else {
-      //       state.products.push(updatedProduct);
-      //     }
-      //   });
-      // })
-
       .addCase(updateCart.rejected, (state, action) => {
-        state.status = "failed";
         state.error = action.payload;
       })
       .addCase(checkoutCart.fulfilled, (state) => {
-        state.status = "succeeded";
         state.products = [];
       })
       .addCase(checkoutCart.rejected, (state, action) => {
-        state.status = "failed";
         state.error = action.payload;
       });
   },

@@ -24,6 +24,13 @@ const persistConfig = {
   whitelist: ["user", "isLoggedIn", "accessToken", "refreshToken"],
 };
 
+const cartPersistConfig = {
+  key: "cart",
+  version: 1,
+  storage,
+  whitelist: ["products"],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
@@ -31,7 +38,7 @@ export const store = configureStore({
     reviews: reviewsReducer,
     pharmacies: pharmaciesReducer,
     products: productsReducer,
-    carts: cartReducer,
+    carts: persistReducer(cartPersistConfig, cartReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

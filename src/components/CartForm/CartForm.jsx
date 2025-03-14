@@ -2,8 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import s from "./CartForm.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { checkoutCart } from "../../redux/carts/operations";
+import { selectCartTotal } from "../../redux/carts/selectors";
 
 const cartSchema = Yup.object().shape({
   name: Yup.string()
@@ -31,6 +32,7 @@ const error = (message) => toast.error(message);
 
 const CartForm = () => {
   const dispatch = useDispatch();
+  const cartTotal = useSelector(selectCartTotal);
 
   const initialCartValues = {
     name: "",
@@ -52,14 +54,13 @@ const CartForm = () => {
           },
           paymentMethod: values.payment,
         })
-      );
+      ).unwrap();
       success();
+      actions.resetForm();
     } catch (err) {
       error(
         err.response?.data?.message || "Something went wrong... Try again!"
       );
-    } finally {
-      actions.resetForm();
     }
   };
 
@@ -71,117 +72,122 @@ const CartForm = () => {
         any other location where you send the products.
       </p>
       <Toaster position="top-center" reverseOrder={true} />
-      <Formik validationSchema={cartSchema} initialValues={initialCartValues}>
-        <Form className={s.form}>
-          <div className={s.inputs}>
-            <div className={s.wrap}>
-              <label>
-                <p className={s.label}>Name</p>
+      <Formik
+        validationSchema={cartSchema}
+        initialValues={initialCartValues}
+        onSubmit={handleSubmit}>
+        {({ handleSubmit }) => (
+          <Form className={s.form} onSubmit={handleSubmit}>
+            <div className={s.inputs}>
+              <div className={s.wrap}>
+                <label>
+                  <p className={s.label}>Name</p>
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Enter text"
+                    className={s.input}
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="span"
+                    className={s.error}
+                  />
+                </label>
+              </div>
+
+              <div className={s.wrap}>
+                <label>
+                  <p className={s.label}>Email</p>
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Enter text"
+                    className={s.input}
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="span"
+                    className={s.error}
+                  />
+                </label>
+              </div>
+
+              <div className={s.wrap}>
+                <label>
+                  <p className={s.label}>Phone</p>
+                  <Field
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter text"
+                    className={s.input}
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    component="span"
+                    className={s.error}
+                  />
+                </label>
+              </div>
+
+              <div className={s.wrap}>
+                <label>
+                  <p className={s.label}>Address</p>
+                  <Field
+                    type="text"
+                    name="address"
+                    placeholder="Enter text"
+                    className={s.input}
+                  />
+                  <ErrorMessage
+                    name="address"
+                    component="span"
+                    className={s.error}
+                  />
+                </label>
+              </div>
+            </div>
+
+            <h2 className={s.title}>Payment method</h2>
+            <p className={s.text}>
+              You can pay us in a multiple way in our payment gateway system.
+            </p>
+            <div className={s.payment}>
+              <label className={s.paymentLabel}>
                 <Field
-                  type="text"
-                  name="name"
-                  placeholder="Enter text"
-                  className={s.input}
+                  type="radio"
+                  name="payment"
+                  value="Cash On Delivery"
+                  className={s.radio}
                 />
-                <ErrorMessage
-                  name="name"
-                  component="span"
-                  className={s.error}
+                <p className={s.paymentText}>Cash On Delivery</p>
+              </label>
+              <label className={s.paymentLabel}>
+                <Field
+                  type="radio"
+                  name="payment"
+                  value="Bank"
+                  className={s.radio}
                 />
+                <p className={s.paymentText}>Bank</p>
               </label>
             </div>
 
-            <div className={s.wrap}>
-              <label>
-                <p className={s.label}>Email</p>
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="Enter text"
-                  className={s.input}
-                />
-                <ErrorMessage
-                  name="email"
-                  component="span"
-                  className={s.error}
-                />
-              </label>
+            <h2 className={s.title}>Order details </h2>
+            <p className={s.text}>
+              Shipping and additional costs are calculated based on values you
+              have entered.
+            </p>
+            <div className={s.total}>
+              <p className={s.sum}>Total:</p>
+              <p className={s.sum}>৳ {cartTotal.toFixed(2)}</p>
             </div>
 
-            <div className={s.wrap}>
-              <label>
-                <p className={s.label}>Phone</p>
-                <Field
-                  type="tel"
-                  name="phone"
-                  placeholder="Enter text"
-                  className={s.input}
-                />
-                <ErrorMessage
-                  name="phone"
-                  component="span"
-                  className={s.error}
-                />
-              </label>
-            </div>
-
-            <div className={s.wrap}>
-              <label>
-                <p className={s.label}>Address</p>
-                <Field
-                  type="text"
-                  name="address"
-                  placeholder="Enter text"
-                  className={s.input}
-                />
-                <ErrorMessage
-                  name="address"
-                  component="span"
-                  className={s.error}
-                />
-              </label>
-            </div>
-          </div>
-
-          <h2 className={s.title}>Payment method</h2>
-          <p className={s.text}>
-            You can pay us in a multiple way in our payment gateway system.
-          </p>
-          <div className={s.payment}>
-            <label className={s.paymentLabel}>
-              <Field
-                type="radio"
-                name="payment"
-                value="Cash On Delivery"
-                className={s.radio}
-              />
-              <p className={s.paymentText}>Cash On Delivery</p>
-            </label>
-            <label className={s.paymentLabel}>
-              <Field
-                type="radio"
-                name="payment"
-                value="Bank"
-                className={s.radio}
-              />
-              <p className={s.paymentText}>Bank</p>
-            </label>
-          </div>
-
-          <h2 className={s.title}>Order details </h2>
-          <p className={s.text}>
-            Shipping and additionnal costs are calculated based on values you
-            have entered.
-          </p>
-          <div className={s.total}>
-            <p className={s.sum}>Total:</p>
-            <p className={s.sum}>৳</p>
-          </div>
-
-          <button type="submit" onSubmit={handleSubmit} className={s.button}>
-            Place order
-          </button>
-        </Form>
+            <button type="submit" className={s.button}>
+              Place order
+            </button>
+          </Form>
+        )}
       </Formik>
     </section>
   );
