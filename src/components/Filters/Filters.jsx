@@ -30,7 +30,7 @@ const Filters = () => {
     category: filters.category,
   };
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values) => {
     dispatch(setFilters(values));
     dispatch(setCurrentPage(1));
 
@@ -46,8 +46,6 @@ const Filters = () => {
     dispatch(setProductsPerPage(productsPerPage));
 
     dispatch(fetchProducts({ page: 1, perPage: productsPerPage }));
-
-    actions.resetForm();
   };
 
   return (
