@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRef } from "react";
 import Header from "../Header/Header";
 import { refresh } from "../../redux/auth/operations";
 import {

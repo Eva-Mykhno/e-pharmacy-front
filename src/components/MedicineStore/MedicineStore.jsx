@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import s from "./MedicineStore.module.css";
+import Loader from "../Loader/Loader";
+import Pagination from "../Pagination/Pagination";
 import {
   selectCurrentPage,
   selectIsLoading,
@@ -14,8 +15,7 @@ import {
   setPharmaciesPerPage,
 } from "../../redux/pharmacies/slice";
 import { fetchPharmacies } from "../../redux/pharmacies/operations";
-import Loader from "../Loader/Loader";
-import Pagination from "../Pagination/Pagination";
+import s from "./MedicineStore.module.css";
 
 const sprite = "/sprite.svg";
 

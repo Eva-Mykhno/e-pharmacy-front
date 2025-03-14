@@ -1,0 +1,172 @@
+.wrapper {
+  padding-top: 40px;
+}
+
+.title {
+  color: var(--black);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.14;
+}
+
+.list {
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image {
+  width: 100%;
+  max-width: 335px;
+  max-height: 300px;
+  border-radius: 20px;
+  border: 1px solid var(--border-product);
+}
+
+.info {
+  padding: 20px;
+  width: 100%;
+  max-width: 335px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  margin-bottom: 4px;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.supplier {
+  margin-bottom: 17px;
+  color: var(--main);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.button {
+  width: 108px;
+  height: 36px;
+  border: none;
+  border-radius: 24px;
+  background-color: var(--green);
+  color: var(--white);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--dark-green);
+}
+
+.right {
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.price {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.link {
+  color: var(--black);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding-top: 56px;
+  }
+
+  .list {
+    padding-bottom: 80px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 32px;
+    column-gap: 13px;
+  }
+
+  .image {
+    width: 226px;
+    max-width: 226px;
+    height: 260px;
+    max-height: 260px;
+  }
+
+  .info {
+    max-width: 226px;
+  }
+
+  .name {
+    width: 120px;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    padding-top: 76px;
+  }
+
+  .list {
+    row-gap: 40px;
+    column-gap: 21px;
+  }
+
+  .image {
+    width: 280px;
+    max-width: 280px;
+    height: 280px;
+    max-height: 280px;
+  }
+
+  .info {
+    max-width: 280px;
+  }
+
+  .name {
+    width: 150px;
+  }
+}

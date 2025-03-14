@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import Loader from "../Loader/Loader";
+import LazyImage from "../LazyImage/LazyImage";
+import TabsContainer from "../TabsContainer/TabsContainer";
+import Modal from "../Modal/Modal";
+import LoginPop from "../LoginPop/LoginPop";
+import RegisterPop from "../RegisterPop/RegisterPop";
 import { fetchProductById } from "../../redux/products/operations";
 import { updateCart } from "../../redux/carts/operations";
 import {
   selectProductById,
   selectIsLoading,
 } from "../../redux/products/selectors";
-import Loader from "../Loader/Loader";
-import LazyImage from "../LazyImage/LazyImage";
-import s from "./ProductOverview.module.css";
-import TabsContainer from "../TabsContainer/TabsContainer";
 import { selectUser } from "../../redux/auth/selectors";
-import Modal from "../Modal/Modal";
-import LoginPop from "../LoginPop/LoginPop";
-import RegisterPop from "../RegisterPop/RegisterPop";
+import s from "./ProductOverview.module.css";
 
 const sprite = "/sprite.svg";
 

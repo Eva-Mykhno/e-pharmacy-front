@@ -2,9 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectCartProducts } from "../../redux/carts/selectors";
 import { fetchCart, updateCart } from "../../redux/carts/operations";
-
-import s from "./Cart.module.css";
 import LazyImage from "../LazyImage/LazyImage";
+import s from "./Cart.module.css";
 
 const sprite = "/sprite.svg";
 

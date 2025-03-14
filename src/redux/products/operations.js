@@ -23,7 +23,7 @@ export const fetchProducts = createAsyncThunk(
 );
 
 export const fetchProductById = createAsyncThunk(
-  "products/fetchById",
+  "product",
   async (id, thunkAPI) => {
     try {
       const { data } = await api.get(`/products/${id}`);

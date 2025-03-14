@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../api/api";
 
 export const fetchPharmacies = createAsyncThunk(
-  "pharmacies/fetchAll",
+  "fetchAll",
   async ({ page, perPage }, thunkAPI) => {
     try {
       const { data } = await api.get("/stores", { params: { page, perPage } });

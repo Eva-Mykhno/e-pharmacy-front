@@ -1,18 +1,18 @@
+import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
-import s from "./Header.module.css";
 import Logo from "../Logo/Logo";
 import NavLinks from "../NavLinks/NavLinks";
 import AuthLinks from "../AuthLinks/AuthLinks";
 import ModalNav from "../ModalNav/ModalNav";
 import Logout from "../Logout/Logout";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import UserInfo from "../UserInfo/UserInfo";
 import {
   selectIsLoggedIn,
   selectIsRefreshing,
 } from "../../redux/auth/selectors";
-import UserInfo from "../UserInfo/UserInfo";
-import { NavLink, useLocation } from "react-router-dom";
+import s from "./Header.module.css";
 
 const sprite = "/sprite.svg";
 

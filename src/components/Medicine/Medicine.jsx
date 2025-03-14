@@ -20,8 +20,8 @@ import Filters from "../Filters/Filters";
 import Modal from "../Modal/Modal";
 import LoginPop from "../LoginPop/LoginPop";
 import RegisterPop from "../RegisterPop/RegisterPop";
-import s from "./Medicine.module.css";
 import { updateCart } from "../../redux/carts/operations";
+import s from "./Medicine.module.css";
 
 const success = () => toast.success("Product added to cart!");
 const error = (message) => toast.error(message);

@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import clsx from "clsx";
 import { logout } from "../../redux/auth/operations";
 import s from "./Logout.module.css";
-import clsx from "clsx";
 
 const Logout = ({ isModal = false, onClose }) => {
   const dispatch = useDispatch();

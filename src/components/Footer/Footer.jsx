@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
-
-import s from "./Footer.module.css";
+import clsx from "clsx";
 import Logo from "../Logo/Logo";
 import NavLinks from "../NavLinks/NavLinks";
 import SocialLinks from "../SocialLinks/SocialLinks";
 import FooterBottom from "../FooterBottom/FooterBottom";
-import clsx from "clsx";
+import s from "./Footer.module.css";
 
 const Footer = () => {
   return (

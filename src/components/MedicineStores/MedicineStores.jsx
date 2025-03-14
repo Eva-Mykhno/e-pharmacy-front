@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import s from "./MedicineStores.module.css";
 import { useEffect, useState } from "react";
+import Loader from "../Loader/Loader";
 import { selectIsLoading, selectNearests } from "../../redux/nearest/selectors";
 import { fetchNearests } from "../../redux/nearest/operations";
-import Loader from "../Loader/Loader";
+import s from "./MedicineStores.module.css";
 
 const sprite = "/sprite.svg";
 

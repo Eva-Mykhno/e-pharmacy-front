@@ -1,12 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import { useEffect } from "react";
-import s from "./LoginForm.module.css";
 import { login } from "../../redux/auth/operations";
+import s from "./LoginForm.module.css";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

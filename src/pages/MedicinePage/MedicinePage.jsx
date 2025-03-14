@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import s from "./MedicinePage.module.css";
 import Medicine from "../../components/Medicine/Medicine";
+import s from "./MedicinePage.module.css";
 
 const MedicinePage = () => {
   return (

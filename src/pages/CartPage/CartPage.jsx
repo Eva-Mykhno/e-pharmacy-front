@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import s from "./CartPage.module.css";
 import Cart from "../../components/Cart/Cart";
 import CartForm from "../../components/CartForm/CartForm";
+import s from "./CartPage.module.css";
 
 const CartPage = () => {
   return (

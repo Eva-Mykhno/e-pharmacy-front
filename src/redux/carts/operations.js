@@ -21,32 +21,6 @@ export const fetchCart = createAsyncThunk("fetchCart", async (_, thunkAPI) => {
   }
 });
 
-// export const updateCart = createAsyncThunk(
-//   "updateCart",
-//   async ({ productId, quantity }, thunkAPI) => {
-//     const token = thunkAPI.getState().auth.accessToken;
-//     if (!token) {
-//       return thunkAPI.rejectWithValue("Token not found");
-//     }
-//     try {
-//       const { data } = await api.patch(
-//         "/cart/update",
-//         { productId, quantity },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
-//       return data.data.products;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(
-//         error.response?.data?.message || "Failed to update cart"
-//       );
-//     }
-//   }
-// );
-
 export const updateCart = createAsyncThunk(
   "updateCart",
   async ({ productId, quantity }, thunkAPI) => {

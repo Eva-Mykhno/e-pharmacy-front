@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import s from "./NotFoundPage.module.css";
 import clsx from "clsx";
+import s from "./NotFoundPage.module.css";
 
 const NotFoundPage = () => {
   return (

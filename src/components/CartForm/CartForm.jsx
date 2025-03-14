@@ -1,10 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
-import s from "./CartForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { checkoutCart } from "../../redux/carts/operations";
 import { selectCartTotal } from "../../redux/carts/selectors";
+import s from "./CartForm.module.css";
 
 const cartSchema = Yup.object().shape({
   name: Yup.string()

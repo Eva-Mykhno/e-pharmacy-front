@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import Logo from "../../components/Logo/Logo";
 import MainContent from "../../components/MainContent/MainContent";
-import s from "./LoginPage.module.css";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { LogoProvider } from "../../context/LogoProvider";
+import s from "./LoginPage.module.css";
 
 const LoginPage = () => {
   return (

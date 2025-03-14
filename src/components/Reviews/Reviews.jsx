@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import s from "./Reviews.module.css";
-import { selectIsLoading, selectReviews } from "../../redux/reviews/selectors";
 import { useEffect, useState } from "react";
-import { fetchReviews } from "../../redux/reviews/operations";
 import Loader from "../Loader/Loader";
+import { fetchReviews } from "../../redux/reviews/operations";
+import { selectIsLoading, selectReviews } from "../../redux/reviews/selectors";
+import s from "./Reviews.module.css";
 
 const Reviews = () => {
   const dispatch = useDispatch();

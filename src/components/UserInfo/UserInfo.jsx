@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import clsx from "clsx";
-import s from "./UserInfo.module.css";
 import {
   selectAccessToken,
   selectUser,
   selectUserName,
 } from "../../redux/auth/selectors";
 import { selectCartCount } from "../../redux/carts/selectors";
-import { useEffect } from "react";
 import { fetchUser } from "../../redux/auth/operations";
-import { useLocation, useNavigate } from "react-router-dom";
+import s from "./UserInfo.module.css";
 
 const sprite = "/sprite.svg";
 
