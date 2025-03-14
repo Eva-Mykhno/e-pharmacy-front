@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Logo from "../../components/Logo/Logo";
 import MainContent from "../../components/MainContent/MainContent";
-import RegisterForm from "../../components/RegisterForm/REgisterForm";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import { LogoProvider } from "../../context/LogoProvider";
 import s from "./RegisterPage.module.css";
 
