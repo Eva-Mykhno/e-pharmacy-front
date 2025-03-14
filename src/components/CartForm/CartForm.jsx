@@ -27,7 +27,8 @@ const cartSchema = Yup.object().shape({
   payment: Yup.string().required("Payment is required"),
 });
 
-const success = () => toast.success("The order is successful!");
+const success = () =>
+  toast.success("Your order has been accepted for processing");
 const error = (message) => toast.error(message);
 
 const CartForm = () => {

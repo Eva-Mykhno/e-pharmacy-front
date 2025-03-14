@@ -1,0 +1,136 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--green);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.item {
+  height: 120px;
+  position: relative;
+  display: flex;
+  gap: 12px;
+}
+
+.item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  display: block;
+  max-width: 335px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-input);
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  border-radius: 27px;
+  border: 1px solid var(--border-banner);
+}
+
+.fullInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.text {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.price {
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.wrapper {
+  display: flex;
+  gap: 19px;
+}
+
+.quantity {
+  width: 96px;
+  height: 32px;
+  padding: 7px 14px;
+  border: 1px solid var(--border-input);
+  border-radius: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.count {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: transparent;
+  stroke: var(--green);
+}
+
+.number {
+  color: var(--black);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+
+.button {
+  width: 90px;
+  height: 32px;
+  padding: 8px 12px;
+  border-radius: 60px;
+  background-color: var(--rose);
+  color: var(--red);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+}

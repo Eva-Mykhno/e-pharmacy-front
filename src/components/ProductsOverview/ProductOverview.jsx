@@ -82,7 +82,7 @@ const ProductOverview = () => {
               <svg className={s.icon} onClick={decrement}>
                 <use href={`${sprite}#icon-minus`} />
               </svg>
-              <p className={s.number}>{count}</p>
+              <span className={s.number}>{count}</span>
               <svg className={s.icon} onClick={increment}>
                 <use href={`${sprite}#icon-plus`} />
               </svg>
