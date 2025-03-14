@@ -46,6 +46,10 @@ This page displays the entire list of medicines selected by the user. You can ch
 Frontend:  
 React, Redux/toolkit, React-router-dom, Redux-persist, React-hot-toast, React-modal, Formik, yup, HTML5, CSS3, JavaScript, CSS Modules for styling
 
+## Backend repository
+
+[E-Pharmacy-back](https://github.com/Eva-Mykhno/e-pharmacy-back)
+
 ## Contacts
 
 [LinkedIn](https://www.linkedin.com/in/eva-mykhno/)  
