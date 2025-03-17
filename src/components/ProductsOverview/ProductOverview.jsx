@@ -19,7 +19,7 @@ import s from "./ProductOverview.module.css";
 
 const sprite = "/sprite.svg";
 
-const success = () => toast.success("Product added to cart!");
+const success = (message) => toast.success(message);
 const error = (message) => toast.error(message);
 
 const ProductOverview = () => {
@@ -32,10 +32,19 @@ const ProductOverview = () => {
   const [count, setCount] = useState(1);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [pendingAddToCart, setPendingAddToCart] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductById(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (user && pendingAddToCart) {
+      dispatch(updateCart({ productId: product._id, quantity: count }));
+      success("The product added to cart!");
+      setPendingAddToCart(false);
+    }
+  }, [user, pendingAddToCart, dispatch, product, count]);
 
   if (isLoading) return <Loader />;
 
@@ -52,13 +61,14 @@ const ProductOverview = () => {
   const handleClick = async () => {
     if (!user) {
       setIsLoginModalOpen(true);
+      setPendingAddToCart(true);
       return;
     }
     try {
       dispatch(updateCart({ productId: product._id, quantity: count }));
-      success();
+      success("Product added to cart!");
     } catch {
-      error();
+      error("Failed to add product to cart");
     }
   };
 

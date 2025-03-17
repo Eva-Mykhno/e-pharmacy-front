@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
@@ -37,14 +36,13 @@ const error = (message) => toast.error(message);
 
 const RegisterPop = ({ onClose, setIsLoginModalOpen }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/login");
+      onClose();
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, onClose]);
 
   const initialRegisterValues = {
     name: "",

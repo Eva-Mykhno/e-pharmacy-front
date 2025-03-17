@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import { login } from "../../redux/auth/operations";
+import { fetchUser, login } from "../../redux/auth/operations";
 import s from "./LoginForm.module.css";
 
 const loginSchema = Yup.object().shape({
@@ -51,6 +51,7 @@ const LoginForm = () => {
       if (login.fulfilled.match(result)) {
         actions.resetForm();
         success();
+        await dispatch(fetchUser());
       } else {
         actions.resetForm();
         error(result.payload?.message ?? "Wrong email or password! Try again!");

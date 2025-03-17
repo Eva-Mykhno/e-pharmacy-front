@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCart, updateCart, checkoutCart } from "./operations";
+import { login, register } from "../auth/operations";
 
 const initialState = {
   products: [],
@@ -38,6 +39,12 @@ const cartSlice = createSlice({
       })
       .addCase(checkoutCart.rejected, (state, action) => {
         state.error = action.payload;
+      })
+      .addCase(login.fulfilled, (state) => {
+        state.products = [];
+      })
+      .addCase(register.fulfilled, (state) => {
+        state.products = [];
       });
   },
 });

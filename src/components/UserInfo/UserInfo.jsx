@@ -31,10 +31,6 @@ const UserInfo = () => {
     }
   }, [dispatch, accessToken, user]);
 
-  if (!name) {
-    return <div>Name not found</div>;
-  }
-
   const firstLetter = name.charAt(0).toUpperCase();
 
   const handleClick = () => {

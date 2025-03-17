@@ -38,6 +38,7 @@ const Medicine = () => {
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [pendingProduct, setPendingProduct] = useState(null);
 
   useEffect(() => {
     const updateProductsPerPage = () => {
@@ -76,6 +77,7 @@ const Medicine = () => {
 
   const handleClick = async (product) => {
     if (!user) {
+      setPendingProduct(product);
       setIsLoginModalOpen(true);
       return;
     }
@@ -87,6 +89,25 @@ const Medicine = () => {
       error();
     }
   };
+
+  useEffect(() => {
+    const addPendingProduct = async () => {
+      if (user && pendingProduct) {
+        try {
+          await dispatch(
+            updateCart({ productId: pendingProduct._id, quantity: 1 })
+          ).unwrap();
+          success();
+        } catch {
+          error("Failed to add product to cart");
+        } finally {
+          setPendingProduct(null);
+        }
+      }
+    };
+
+    addPendingProduct();
+  }, [user, pendingProduct, dispatch]);
 
   return (
     <div className={s.wrapper}>

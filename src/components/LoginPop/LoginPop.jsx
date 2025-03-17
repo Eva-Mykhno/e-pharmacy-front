@@ -5,8 +5,7 @@ import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { login } from "../../redux/auth/operations";
-import s from "./LoginPop.module.css"
-
+import s from "./LoginPop.module.css";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -35,7 +34,6 @@ const LoginPop = ({ onClose, setIsRegisterModalOpen }) => {
   useEffect(() => {
     if (isLoggedIn) {
       onClose();
-      success();
     }
   }, [isLoggedIn, onClose]);
 
@@ -47,6 +45,7 @@ const LoginPop = ({ onClose, setIsRegisterModalOpen }) => {
 
       if (login.fulfilled.match(result)) {
         actions.resetForm();
+        success();
       } else {
         actions.resetForm();
         error(result.payload?.message ?? "Wrong email or password! Try again!");

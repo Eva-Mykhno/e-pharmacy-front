@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import { register } from "../../redux/auth/operations";
+import { fetchUser, register } from "../../redux/auth/operations";
 import s from "./RegisterForm.module.css";
 
 const registerSchema = Yup.object().shape({
@@ -60,6 +60,7 @@ const RegisterForm = () => {
       if (register.fulfilled.match(result)) {
         actions.resetForm();
         success();
+        await dispatch(fetchUser());
       } else {
         actions.resetForm();
         error(result.payload?.message || "Something went wrong... Try again!");
