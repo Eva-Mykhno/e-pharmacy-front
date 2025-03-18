@@ -1,3 +1,8 @@
+.background {
+  background-color: var(--green);
+  width: 100vw;
+}
+
 .hero {
   margin-left: calc(-1 * (100vw - 100%) / 2);
   position: relative;

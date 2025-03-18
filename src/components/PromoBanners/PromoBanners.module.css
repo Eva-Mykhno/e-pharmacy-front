@@ -3,10 +3,12 @@
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 16px;
 }
 
 .item {
+  width: 280px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -70,10 +72,15 @@
   color: var(--green);
 }
 
+@media screen and (min-width: 375px) {
+  .item {
+    width: 335px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .list {
-    padding-top: 64px;
-    padding-bottom: 60px;
+    padding: 64px 17px 60px 17px;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 28px;

@@ -37,45 +37,50 @@ const Header = () => {
   };
 
   return (
-    <header className={clsx(s.header, { [s.home]: isHome }, "container")}>
-      <NavLink to="/home">
-        <Logo color={isHome ? "white" : "green"} />
-      </NavLink>
+    <div className={clsx(s.wrapper, { [s.home]: isHome })}>
+      <header className={clsx(s.header, { [s.home]: isHome }, "container")}>
+        <NavLink to="/home">
+          <Logo color={isHome ? "white" : "green"} />
+        </NavLink>
 
-      <div className={s.mobile}>
-        {isLoggedIn && <UserInfo />}
-        <button onClick={() => openModal()} type="button" className={s.button}>
-          <svg className={clsx(s.menu, { [s.home]: isHome })}>
-            <use href={`${sprite}#icon-menu`} />
-          </svg>
-        </button>
+        <div className={s.mobile}>
+          {isLoggedIn && <UserInfo />}
+          <button
+            onClick={() => openModal()}
+            type="button"
+            className={s.button}>
+            <svg className={clsx(s.menu, { [s.home]: isHome })}>
+              <use href={`${sprite}#icon-menu`} />
+            </svg>
+          </button>
 
-        <ModalNav isOpen={isModalOpen} onClose={closeModal}>
-          <div className={s.buttons}>
-            <div className={s.nav}>
-              <NavLinks variant="header" onClose={closeModal} />
+          <ModalNav isOpen={isModalOpen} onClose={closeModal}>
+            <div className={s.buttons}>
+              <div className={s.nav}>
+                <NavLinks variant="header" onClose={closeModal} />
+              </div>
+              {isLoggedIn ? (
+                <Logout isModal={true} onClose={closeModal} />
+              ) : (
+                <AuthLinks isModal={true} onClose={closeModal} />
+              )}
             </div>
-            {isLoggedIn ? (
-              <Logout isModal={true} onClose={closeModal} />
-            ) : (
-              <AuthLinks isModal={true} onClose={closeModal} />
-            )}
-          </div>
-        </ModalNav>
-      </div>
+          </ModalNav>
+        </div>
 
-      <div className={s.desktop}>
-        <NavLinks variant="header" />
-        {isLoggedIn ? (
-          <div className={s.info}>
-            <UserInfo />
-            <Logout />
-          </div>
-        ) : (
-          <AuthLinks />
-        )}
-      </div>
-    </header>
+        <div className={s.desktop}>
+          <NavLinks variant="header" />
+          {isLoggedIn ? (
+            <div className={s.info}>
+              <UserInfo />
+              <Logout />
+            </div>
+          ) : (
+            <AuthLinks />
+          )}
+        </div>
+      </header>
+    </div>
   );
 };
 

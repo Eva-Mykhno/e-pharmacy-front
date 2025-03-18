@@ -1,5 +1,11 @@
+.wrapper {
+  background-color: var(--green);
+  width: 100vw;
+}
+
 .footer {
   background-color: var(--green);
+  width: 100vw;
   display: flex;
   flex-direction: column;
   gap: 100px;

@@ -37,6 +37,9 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--background);
 }
 
 h1,
@@ -80,12 +83,17 @@ img {
 }
 
 .container {
-  width: 100%;
-  max-width: 375px;
+  width: 100vw;
+  max-width: 320px;
   padding: 20px;
-  background-color: var(--background);
   margin: 0 auto;
   overflow: hidden;
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    max-width: 375px;
+  }
 }
 
 @media screen and (min-width: 768px) {
